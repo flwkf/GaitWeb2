@@ -122,11 +122,8 @@ if uploaded_file is not None:
         if hasattr(gait_data, 'df'):
             data_dict = gait_data.to_dict()
 
-            # Menyisipkan data ke MongoDB
-            uri = "mongodb+srv://rizalrahman2003:rizalrahman2003@cluster0.kbjxaoh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-
             # Create a new client and connect to the server
-            client = MongoClient(uri, server_api=ServerApi('1'))            
+            client = MongoClient(st.secrets["MONGO_URI"])            
             db = client['GaitDB']
             collection = db['gait_data']
 
