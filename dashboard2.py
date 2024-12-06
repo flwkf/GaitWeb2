@@ -101,8 +101,6 @@ class GaitAnalysisData:
             **self.body_measurements,
             **self.norm_kinematics
         }
-# Komponen Streamlit
-st.title("Gait Analysis Data Processor")
 
 # Sidebar untuk upload file
 uploaded_file = st.sidebar.file_uploader("Upload your Excel file", type=["xlsx"])
