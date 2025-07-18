@@ -103,7 +103,7 @@ class GaitAnalysisData:
         }
 
 # Sidebar untuk upload file
-uploaded_file = st.sidebar.file_uploader("Upload your Excel file", type=["xlsx"])
+uploaded_file = st.sidebar.file_uploader("upload patient data", type=["xlsx"])
 
 if uploaded_file is not None:
     st.write("File uploaded:", uploaded_file.name)
