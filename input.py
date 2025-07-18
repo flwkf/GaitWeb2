@@ -116,21 +116,40 @@ if uploaded_file is not None:
     jenis_kelamin = st.text_input("Enter Gender (L/P):").strip().upper()
 
     if st.button("Process File"):
-        content = uploaded_file.read()
-        gait_data = GaitAnalysisData(content, usia, jenis_kelamin)
-
-        if hasattr(gait_data, 'df'):
-            data_dict = gait_data.to_dict()
-
-            # Create a new client and connect to the server
-            client = MongoClient(st.secrets["MONGO_URI"])            
-            db = client['GaitDB']
-            collection = db['gait_data']
-
-            try:
-                collection.insert_one(data_dict)
-                st.success("Data successfully inserted into MongoDB!")
-            except Exception as e:
-                st.error(f"Error inserting data into MongoDB: {e}")
+        if usia == 0 or jenis_kelamin == "":
+            st.warning("Mohon isi usia dan jenis kelamin sebelum memproses file.")
         else:
-            st.error("Failed to process the uploaded data.")
+            content = uploaded_file.read()
+            gait_data = GaitAnalysisData(content, usia, jenis_kelamin)
+    
+            if hasattr(gait_data, 'df'):
+    
+                data_dict = gait_data.to_dict()
+
+                # Periksa apakah ada data kosong (None atau NaN)
+                def check_missing(data):
+                    if isinstance(data, dict):
+                        return any(check_missing(v) for v in data.values())
+                    elif isinstance(data, list):
+                        return any(check_missing(v) for v in data)
+                    else:
+                        return pd.isna(data)
+                
+                if check_missing(data_dict):
+                    st.warning("Data tidak lengkap. Pastikan semua nilai diisi sebelum menyimpan ke database.")
+                else:
+    
+                    # Menyisipkan data ke MongoDB
+                    
+                    # Create a new client and connect to the server
+                    client = MongoClient(st.secrets["MONGO_URI"])            
+                    db = client['GaitDB']
+                    collection = db['gait_data']
+        
+                    try:
+                        collection.insert_one(data_dict)
+                        st.success("Data successfully inserted into MongoDB!")
+                    except Exception as e:
+                        st.error(f"Error inserting data into MongoDB: {e}")
+            else:
+                st.error("Failed to process the uploaded data.")
