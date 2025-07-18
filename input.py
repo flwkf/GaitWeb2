@@ -146,7 +146,7 @@ if uploaded_file is not None:
                         return False
 
                 if check_missing(data_dict):
-                    st.warning("Data tidak lengkap. Pastikan semua nilai diisi sebelum menyimpan ke database.")
+                    st.warning("Data mengandung nilai kosong atau teks non-numerik.")
                 else:
     
                     # Menyisipkan data ke MongoDB
