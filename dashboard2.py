@@ -250,7 +250,7 @@ if uploaded_file is not None:
                 x=lpelvis["%cycle"], 
                 y=lpelvis["your left pelvis"], 
                 mode='lines',
-                name='Yours',
+                name='Patient',
                 line=dict(color='white')
             ))
             fig1.add_trace(go.Scatter(
@@ -294,7 +294,7 @@ if uploaded_file is not None:
                 x=rpelvis["%cycle"], 
                 y=rpelvis["your right pelvis"], 
                 mode='lines',
-                name='Yours',
+                name='Patient',
                 line=dict(color='white')
             ))
             fig2.add_trace(go.Scatter(
@@ -368,7 +368,7 @@ if uploaded_file is not None:
                 x=lknee["%cycle"], 
                 y=lknee["your left knee"], 
                 mode='lines',
-                name='Yours',
+                name='Patient',
                 line=dict(color='white')
             ))
             fig3.add_trace(go.Scatter(
@@ -410,7 +410,7 @@ if uploaded_file is not None:
                 x=rknee["%cycle"], 
                 y=rknee["your right knee"], 
                 mode='lines',
-                name='Yours',
+                name='Patient',
                 line=dict(color='white')
             ))
             fig4.add_trace(go.Scatter(
@@ -484,7 +484,7 @@ if uploaded_file is not None:
                 x=lhip["%cycle"], 
                 y=lhip["your left hip"], 
                 mode='lines',
-                name='Yours',
+                name='Patient',
                 line=dict(color='white')
             ))
             fig5.add_trace(go.Scatter(
@@ -526,7 +526,7 @@ if uploaded_file is not None:
                 x=rhip["%cycle"], 
                 y=rhip["your right hip"], 
                 mode='lines',
-                name='Yours',
+                name='Patient',
                 line=dict(color='white')
             ))
             fig6.add_trace(go.Scatter(
@@ -599,7 +599,7 @@ if uploaded_file is not None:
                 x=lankle["%cycle"], 
                 y=lankle["your left ankle"], 
                 mode='lines',
-                name='Yours',
+                name='Patient',
                 line=dict(color='white')
             ))
             fig7.add_trace(go.Scatter(
@@ -641,7 +641,7 @@ if uploaded_file is not None:
                 x=rankle["%cycle"], 
                 y=rankle["your right ankle"], 
                 mode='lines',
-                name='Yours',
+                name='Patient',
                 line=dict(color='white')
             ))
             fig8.add_trace(go.Scatter(
