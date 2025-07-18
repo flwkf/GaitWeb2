@@ -14,16 +14,19 @@ class GaitAnalysisData:
             self.suin = self.df[0]  # Lembar pertama untuk data mentah
             self.normkin = self.df[1].iloc[:, :31]  # Lembar kedua untuk kinematika terstandarisasi           
         except Exception as e:
-            st.error(f"Error reading the Excel file: {e}")
+            st.error(f"Error membaca file Excel: {e}")
             return
 
-        # Memproses data
-        self.cleaned_data = self.clean_data()
-        self.normkin_processed = self.process_normkin()
-        self.trial_info = self.extract_trial_info()
-        self.subject_params = self.extract_subject_params(usia, jenis_kelamin)
-        self.body_measurements = self.extract_body_measurements()
-        self.norm_kinematics = self.extract_norm_kinematics()
+        try:
+            # Memproses data
+            self.cleaned_data = self.clean_data()
+            self.normkin_processed = self.process_normkin()
+            self.trial_info = self.extract_trial_info()
+            self.subject_params = self.extract_subject_params(usia, jenis_kelamin)
+            self.body_measurements = self.extract_body_measurements()
+            self.norm_kinematics = self.extract_norm_kinematics()
+        except Exception as e:
+            st.error(f"Terjadi kesalahan saat memproses data: {e}")
 
     def clean_data(self):
         cleaned_data = self.suin.dropna(how='all')
@@ -34,6 +37,16 @@ class GaitAnalysisData:
         column_namesX = [col for col in self.normkin.columns if col.endswith('X')]
         normkin = self.normkin.loc[:, column_namesX]
         normkin.insert(0, "Percentage of Gait Cycle", self.df[1].iloc[:, 0].tolist())
+
+        # Validasi data normkin
+        for col in normkin.columns[1:]:  # Lewati kolom 'Percentage of Gait Cycle'
+            if normkin[col].isnull().any():
+                raise ValueError(f"Kolom '{col}' memiliki nilai NaN.")
+            if (normkin[col] == 0).all():
+                raise ValueError(f"Kolom '{col}' seluruhnya bernilai 0.")
+            if not pd.api.types.is_numeric_dtype(normkin[col]):
+                raise ValueError(f"Kolom '{col}' mengandung data non-numerik.")
+
         return normkin
 
     def extract_trial_info(self):
@@ -117,9 +130,13 @@ if uploaded_file is not None:
 
     if st.button("Process File"):
         content = uploaded_file.read()
-        gait_data = GaitAnalysisData(content, usia, jenis_kelamin)
+        try:
+            gait_data = GaitAnalysisData(content, usia, jenis_kelamin)
+        except Exception as e:
+            st.error(f"Gagal memproses file: {e}")
+            gait_data = None
 
-        if hasattr(gait_data, 'df'):
+        if gait_data and hasattr(gait_data, 'df'):
             data_dict = gait_data.to_dict()
 
             # Create a new client and connect to the server
@@ -129,8 +146,8 @@ if uploaded_file is not None:
 
             try:
                 collection.insert_one(data_dict)
-                st.success("Data successfully inserted into MongoDB!")
+                st.success("Data berhasil disimpan ke MongoDB!")
             except Exception as e:
-                st.error(f"Error inserting data into MongoDB: {e}")
+                st.error(f"Gagal menyimpan data ke MongoDB: {e}")
         else:
-            st.error("Failed to process the uploaded data.")
+            st.warning("File tidak valid atau gagal diproses.")
