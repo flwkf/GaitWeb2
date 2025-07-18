@@ -13,6 +13,18 @@ class GaitAnalysisData:
             self.df = pd.read_excel(io.BytesIO(content), sheet_name=[0, 1])
             self.suin = self.df[0]  # Lembar pertama untuk data mentah
             self.normkin = self.df[1].iloc[:, :31]  # Lembar kedua untuk kinematika terstandarisasi
+            # Ambil kolom yang namanya diakhiri dengan "X"
+            kolom_x = [col for col in self.normkin.columns if col.endswith('X')]
+
+            # Cek apakah ada 0, NaN, atau teks di kolom tersebut
+            for col in kolom_x:
+                if self.normkin[col].isnull().any():
+                    raise ValueError(f"Ada nilai NaN di kolom '{col}'")
+                if (self.normkin[col] == 0).any():
+                    raise ValueError(f"Ada nilai 0 di kolom '{col}'")
+                if not pd.api.types.is_numeric_dtype(self.normkin[col]):
+                    raise ValueError(f"Ada nilai non-numerik (teks) di kolom '{col}'")
+                    
         except Exception as e:
             st.error(f"Error reading the Excel file: {e}")
             return
