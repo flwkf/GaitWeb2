@@ -133,8 +133,18 @@ if uploaded_file is not None:
                     elif isinstance(data, list):
                         return any(check_missing(v) for v in data)
                     else:
-                        return pd.isna(data)
-                
+                        # Deteksi NaN atau None
+                        if pd.isna(data):
+                            return True
+                        # Deteksi jika seharusnya angka tapi berupa teks non-numerik
+                        if isinstance(data, str):
+                            try:
+                                float(data)  # jika bisa diubah ke angka, aman
+                                return False
+                            except ValueError:
+                                return True  # kalau tidak bisa diubah ke float → berarti teks
+                        return False
+
                 if check_missing(data_dict):
                     st.warning("Data tidak lengkap. Pastikan semua nilai diisi sebelum menyimpan ke database.")
                 else:
