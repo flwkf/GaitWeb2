@@ -288,7 +288,7 @@ if uploaded_file is not None:
                 y=rpelvis["Mean_Rpelvis"], 
                 mode='lines',
                 name='Average Right Pelvis<br>(Normal Subjects)',
-                line=dict(color='cyan')
+                line=dict(color='dark blue')
             ))
             fig2.add_trace(go.Scatter(
                 x=rpelvis["%cycle"], 
@@ -302,7 +302,7 @@ if uploaded_file is not None:
                 y=rpelvis["Mean_Rpelvis"] + rpelvis["std_Rpelvis"], 
                 mode='lines',
                 name='Upper Bound (Right)',
-                line=dict(color='cyan', width=0),
+                line=dict(color='dark blue', width=0),
                 showlegend=False
             ))
             fig2.add_trace(go.Scatter(
@@ -310,7 +310,7 @@ if uploaded_file is not None:
                 y=rpelvis["Mean_Rpelvis"] - rpelvis["std_Rpelvis"], 
                 mode='lines',
                 name='Lower Bound (Right)',
-                line=dict(color='cyan', width=0),
+                line=dict(color='dark blue', width=0),
                 fill='tonexty',
                 fillcolor='rgba(0, 255, 255, 0.2)',
                 showlegend=False
@@ -404,7 +404,7 @@ if uploaded_file is not None:
                 y=rknee["Mean_Rknee"], 
                 mode='lines',
                 name='Average Right Knee<br>(Normal Subjects)',
-                line=dict(color='cyan')
+                line=dict(color='dark blue')
             ))
             fig4.add_trace(go.Scatter(
                 x=rknee["%cycle"], 
@@ -418,7 +418,7 @@ if uploaded_file is not None:
                 y=rknee["Mean_Rknee"] + rknee["std_Rknee"], 
                 mode='lines',
                 name='Upper Bound (Right)',
-                line=dict(color='cyan', width=0),
+                line=dict(color='dark blue', width=0),
                 showlegend=False
             ))
             fig4.add_trace(go.Scatter(
@@ -426,7 +426,7 @@ if uploaded_file is not None:
                 y=rknee["Mean_Rknee"] - rknee["std_Rknee"], 
                 mode='lines',
                 name='Lower Bound (Right)',
-                line=dict(color='cyan', width=0),
+                line=dict(color='dark blue', width=0),
                 fill='tonexty',
                 fillcolor='rgba(0, 255, 255, 0.2)',
                 showlegend=False
@@ -520,7 +520,7 @@ if uploaded_file is not None:
                 y=rhip["Mean_Rhip"], 
                 mode='lines',
                 name='Average Right Hip<br>(Normal Subjects)',
-                line=dict(color='cyan')
+                line=dict(color='dark blue')
             ))
             fig6.add_trace(go.Scatter(
                 x=rhip["%cycle"], 
@@ -534,7 +534,7 @@ if uploaded_file is not None:
                 y=rhip["Mean_Rhip"] + rhip["std_Rhip"], 
                 mode='lines',
                 name='Upper Bound (Right)',
-                line=dict(color='cyan', width=0),
+                line=dict(color='dark blue', width=0),
                 showlegend=False
             ))
             fig6.add_trace(go.Scatter(
@@ -542,7 +542,7 @@ if uploaded_file is not None:
                 y=rhip["Mean_Rhip"] - rhip["std_Rhip"], 
                 mode='lines',
                 name='Lower Bound (Right)',
-                line=dict(color='cyan', width=0),
+                line=dict(color='dark blue', width=0),
                 fill='tonexty',
                 fillcolor='rgba(0, 255, 255, 0.2)',
                 showlegend=False
@@ -635,7 +635,7 @@ if uploaded_file is not None:
                 y=rankle["Mean_Rankle"], 
                 mode='lines',
                 name='Average Right Ankle<br>(Normal Subjects)',
-                line=dict(color='cyan')
+                line=dict(color='dark blue')
             ))
             fig8.add_trace(go.Scatter(
                 x=rankle["%cycle"], 
@@ -649,7 +649,7 @@ if uploaded_file is not None:
                 y=rankle["Mean_Rankle"] + rankle["std_Rankle"], 
                 mode='lines',
                 name='Upper Bound (Right)',
-                line=dict(color='cyan', width=0),
+                line=dict(color='dark blue', width=0),
                 showlegend=False
             ))
             fig8.add_trace(go.Scatter(
@@ -657,7 +657,7 @@ if uploaded_file is not None:
                 y=rankle["Mean_Rankle"] - rankle["std_Rankle"], 
                 mode='lines',
                 name='Lower Bound (Right)',
-                line=dict(color='cyan', width=0),
+                line=dict(color='dark blue', width=0),
                 fill='tonexty',
                 fillcolor='rgba(0, 255, 255, 0.2)',
                 showlegend=False
@@ -855,7 +855,7 @@ else:
             y=rpelvis["Mean_Rpelvis"], 
             mode='lines',
             name='Average Right Pelvis<br>(Normal Subjects)',
-            line=dict(color='cyan'),
+            line=dict(color='dark blue'),
             hoverinfo='text',
             text=[f"Average Normal Subjects: {cycle}%, {val:.2f}°" for cycle, val in zip(rpelvis["%cycle"], rpelvis["Mean_Rpelvis"])]
         ))
@@ -864,7 +864,7 @@ else:
             y=rpelvis["Mean_Rpelvis"] + rpelvis["std_Rpelvis"], 
             mode='lines',
             name='Upper Bound (Right)',
-            line=dict(color='cyan', width=0),
+            line=dict(color='dark blue', width=0),
             showlegend=False,
             hoverinfo='skip'
         ))
@@ -873,7 +873,7 @@ else:
             y=rpelvis["Mean_Rpelvis"] - rpelvis["std_Rpelvis"], 
             mode='lines',
             name='Standard Error Area',
-            line=dict(color='cyan', width=0),
+            line=dict(color='dark blue', width=0),
             fill='tonexty',
             fillcolor='rgba(0, 255, 255, 0.2)',
             showlegend=True,
@@ -969,7 +969,7 @@ else:
             y=rknee["Mean_Rknee"], 
             mode='lines',
             name='Average Right Knee<br>(Normal Subjects)',
-            line=dict(color='cyan'),
+            line=dict(color='dark blue'),
             hoverinfo='text',
             text=[f"Average Normal Subjects: {cycle}%, {val:.2f}°" for cycle, val in zip(rknee["%cycle"], rknee["Mean_Rknee"])]
         ))
@@ -978,7 +978,7 @@ else:
             y=rknee["Mean_Rknee"] + rknee["std_Rknee"], 
             mode='lines',
             name='Upper Bound (Right)',
-            line=dict(color='cyan', width=0),
+            line=dict(color='dark blue', width=0),
             showlegend=False,
             hoverinfo='skip'
         ))
@@ -987,7 +987,7 @@ else:
             y=rknee["Mean_Rknee"] - rknee["std_Rknee"], 
             mode='lines',
             name='Standard Error Area',
-            line=dict(color='cyan', width=0),
+            line=dict(color='dark blue', width=0),
             fill='tonexty',
             fillcolor='rgba(0, 255, 255, 0.2)',
             showlegend=False,
@@ -1083,7 +1083,7 @@ else:
             y=rhip["Mean_Rhip"], 
             mode='lines',
             name='Average Right Hip<br>(Normal Subjects)',
-            line=dict(color='cyan'),
+            line=dict(color='dark blue'),
             hoverinfo='text',
             text=[f"Average Normal Subjects: {cycle}%, {val:.2f}°" for cycle, val in zip(rhip["%cycle"], rhip["Mean_Rhip"])]
         ))
@@ -1092,7 +1092,7 @@ else:
             y=rhip["Mean_Rhip"] + rhip["std_Rhip"], 
             mode='lines',
             name='Upper Bound (Right)',
-            line=dict(color='cyan', width=0),
+            line=dict(color='dark blue', width=0),
             showlegend=False,
             hoverinfo='skip'
         ))
@@ -1101,7 +1101,7 @@ else:
             y=rhip["Mean_Rhip"] - rhip["std_Rhip"], 
             mode='lines',
             name='Standard Error Area',
-            line=dict(color='cyan', width=0),
+            line=dict(color='dark blue', width=0),
             fill='tonexty',
             fillcolor='rgba(0, 255, 255, 0.2)',
             showlegend=False,
@@ -1195,7 +1195,7 @@ else:
             y=rankle["Mean_Rankle"], 
             mode='lines',
             name='Average Right Ankle<br>(Normal Subjects)',
-            line=dict(color='cyan'),
+            line=dict(color='dark blue'),
             hoverinfo='text',
             text=[f"Average Normal Subjects: {cycle}%, {val:.2f}°" for cycle, val in zip(rankle["%cycle"], rankle["Mean_Rankle"])]
         ))
@@ -1204,7 +1204,7 @@ else:
             y=rankle["Mean_Rankle"] + rankle["std_Rankle"], 
             mode='lines',
             name='Upper Bound (Right)',
-            line=dict(color='cyan', width=0),
+            line=dict(color='dark blue', width=0),
             showlegend=False,
             hoverinfo='skip'
         ))
@@ -1213,7 +1213,7 @@ else:
             y=rankle["Mean_Rankle"] - rankle["std_Rankle"], 
             mode='lines',
             name='Standard Error Area',
-            line=dict(color='cyan', width=0),
+            line=dict(color='dark blue', width=0),
             fill='tonexty',
             fillcolor='rgba(0, 255, 255, 0.2)',
             showlegend=False,
