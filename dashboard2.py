@@ -830,7 +830,8 @@ else:
             fillcolor='rgba(255, 165, 0, 0.2)',
             showlegend=True,
             hoverinfo='text',
-            text=['Lower Bound (Left)']
+            text=[f"Lower Bound (Left): {val:.2f}°" for val in (lpelvis["Mean_Lpelvis"] - lpelvis["std_Lpelvis"])]
+
         ))
         
         ## Update layout
