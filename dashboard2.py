@@ -282,7 +282,7 @@ if uploaded_file is not None:
                 template="plotly_dark",
                 title_x=0.5
             )
-            st.write(f"**Mean difference in left pelvis angle (Patient vs Normal): {maelpelvis:.2f}°**")
+            fig1.write(f"**Mean difference in left pelvis angle (Patient vs Normal): {maelpelvis:.2f}°**")
             
             fig2 = go.Figure()
             ## Add mean and shading for Right Pelvis
@@ -325,7 +325,7 @@ if uploaded_file is not None:
                 template="plotly_dark",
                 title_x=0.5
             )
-            st.write(f"**Mean difference in right pelvis angle (Patient vs Normal): {maerpelvis:.2f}°**")
+            fig2.write(f"**Mean difference in right pelvis angle (Patient vs Normal): {maerpelvis:.2f}°**")
 
             # Knee
             percentage_cycle = pd.DataFrame(filtered_df['Percentage of Gait Cycle'].tolist())
