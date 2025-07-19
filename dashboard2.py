@@ -244,7 +244,9 @@ if uploaded_file is not None:
                 y=lpelvis["Mean_Lpelvis"], 
                 mode='lines',
                 name='Average Left Pelvis<br>(Normal Subjects)',
-                line=dict(color='orange')
+                line=dict(color='orange'),
+                hoverinfo='text',
+                text=[f"Average Normal Subjects: {cycle}%, {val:.2f}°" for cycle, val in zip(lpelvis["%cycle"], lpelvis["Mean_Lpelvis"])]
             ))
             fig1.add_trace(go.Scatter(
                 x=lpelvis["%cycle"], 
@@ -259,17 +261,20 @@ if uploaded_file is not None:
                 mode='lines',
                 name='Upper Bound (Left)',
                 line=dict(color='orange', width=0),
-                showlegend=False
+                showlegend=False,
+                hoverinfo='skip'
             ))
             fig1.add_trace(go.Scatter(
                 x=lpelvis["%cycle"], 
                 y=lpelvis["Mean_Lpelvis"] - lpelvis["std_Lpelvis"], 
                 mode='lines',
-                name='Lower Bound (Left)',
+                name='Standard Error Area',
                 line=dict(color='orange', width=0),
                 fill='tonexty',  # Fill between this trace and the previous one
                 fillcolor='rgba(255, 165, 0, 0.2)',
-                showlegend=False
+                showlegend=True,
+                hoverinfo='text',
+                text=[f"Upper Bound (Left): {cycle}%, {valup:.2f}°<br>Lower Bound (Left): {cycle}%, {vallow:.2f}°" for cycle, vallow, valup in zip(lpelvis["%cycle"], lpelvis["Mean_Lpelvis"] - lpelvis["std_Lpelvis"], lpelvis["Mean_Lpelvis"] + lpelvis["std_Lpelvis"])]
             ))
             
             ## Update layout
@@ -278,7 +283,8 @@ if uploaded_file is not None:
                 xaxis_title="%Cycle",
                 yaxis_title="Value",
                 template="plotly_dark",
-                title_x=0.5
+                title_x=0.5,
+                hovermode="x unified"
             )
             
             fig2 = go.Figure()
