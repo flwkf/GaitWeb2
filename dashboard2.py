@@ -244,7 +244,7 @@ if uploaded_file is not None:
                 x=lpelvis["%cycle"], 
                 y=lpelvis["Mean_Lpelvis"], 
                 mode='lines',
-                name='Left',
+                name='Average Left Pelvis (Normal Subjects)',
                 line=dict(color='orange')
             ))
             fig1.add_trace(go.Scatter(
@@ -288,7 +288,7 @@ if uploaded_file is not None:
                 x=rpelvis["%cycle"], 
                 y=rpelvis["Mean_Rpelvis"], 
                 mode='lines',
-                name='Right',
+                name='Average Right Pelvis (Normal Subjects)',
                 line=dict(color='cyan')
             ))
             fig2.add_trace(go.Scatter(
@@ -362,7 +362,7 @@ if uploaded_file is not None:
                 x=lknee["%cycle"], 
                 y=lknee["Mean_Lknee"], 
                 mode='lines',
-                name='Left',
+                name='Average Left Knee (Normal Subjects)',
                 line=dict(color='orange')
             ))
             fig3.add_trace(go.Scatter(
@@ -404,7 +404,7 @@ if uploaded_file is not None:
                 x=rknee["%cycle"], 
                 y=rknee["Mean_Rknee"], 
                 mode='lines',
-                name='Right',
+                name='Average Right Knee (Normal Subjects)',
                 line=dict(color='cyan')
             ))
             fig4.add_trace(go.Scatter(
@@ -478,7 +478,7 @@ if uploaded_file is not None:
                 x=lhip["%cycle"], 
                 y=lhip["Mean_Lhip"], 
                 mode='lines',
-                name='Left',
+                name='Average Left Hip (Normal Subjects)',
                 line=dict(color='orange')
             ))
             fig5.add_trace(go.Scatter(
@@ -520,7 +520,7 @@ if uploaded_file is not None:
                 x=rhip["%cycle"], 
                 y=rhip["Mean_Rhip"], 
                 mode='lines',
-                name='Right',
+                name='Average Right Hip (Normal Subjects)',
                 line=dict(color='cyan')
             ))
             fig6.add_trace(go.Scatter(
@@ -593,7 +593,7 @@ if uploaded_file is not None:
                 x=lankle["%cycle"], 
                 y=lankle["Mean_Lankle"], 
                 mode='lines',
-                name='Left',
+                name='Average Left Ankle (Normal Subjects)',
                 line=dict(color='orange')
             ))
             fig7.add_trace(go.Scatter(
@@ -623,7 +623,7 @@ if uploaded_file is not None:
             ))
             
             fig7.update_layout(
-                title="Right Ankle",
+                title="Left Ankle",
                 xaxis_title="%Cycle",
                 yaxis_title="Value",
                 template="plotly_dark",
@@ -635,7 +635,7 @@ if uploaded_file is not None:
                 x=rankle["%cycle"], 
                 y=rankle["Mean_Rankle"], 
                 mode='lines',
-                name='Right',
+                name='Average Right Ankle (Normal Subjects)',
                 line=dict(color='cyan')
             ))
             fig8.add_trace(go.Scatter(
@@ -665,7 +665,7 @@ if uploaded_file is not None:
             ))
 
             fig8.update_layout(
-                title="Left Ankle",
+                title="Right Ankle",
                 xaxis_title="%Cycle",
                 yaxis_title="Value",
                 template="plotly_dark",
@@ -795,7 +795,7 @@ else:
             x=lpelvis["%cycle"], 
             y=lpelvis["Mean_Lpelvis"], 
             mode='lines',
-            name='Left',
+            name='Average Left Pelvis (Normal Subjects)',
             line=dict(color='orange')
         ))
         fig1.add_trace(go.Scatter(
@@ -832,7 +832,7 @@ else:
             x=rpelvis["%cycle"], 
             y=rpelvis["Mean_Rpelvis"], 
             mode='lines',
-            name='Right',
+            name='Average Right Pelvis (Normal Subjects)',
             line=dict(color='cyan')
         ))
         fig2.add_trace(go.Scatter(
@@ -897,7 +897,7 @@ else:
             x=lknee["%cycle"], 
             y=lknee["Mean_Lknee"], 
             mode='lines',
-            name='Left',
+            name='Average Left Knee (Normal Subjects)',
             line=dict(color='orange')
         ))
         fig3.add_trace(go.Scatter(
@@ -932,7 +932,7 @@ else:
             x=rknee["%cycle"], 
             y=rknee["Mean_Rknee"], 
             mode='lines',
-            name='Right',
+            name='Average Right Knee (Normal Subjects)',
             line=dict(color='cyan')
         ))
         fig4.add_trace(go.Scatter(
@@ -997,7 +997,7 @@ else:
             x=lhip["%cycle"], 
             y=lhip["Mean_Lhip"], 
             mode='lines',
-            name='Left',
+            name='Average Left Hip (Normal Subjects)',
             line=dict(color='orange')
         ))
         fig5.add_trace(go.Scatter(
@@ -1032,7 +1032,7 @@ else:
             x=rhip["%cycle"], 
             y=rhip["Mean_Rhip"], 
             mode='lines',
-            name='Right',
+            name='Average Right Hip (Normal Subjects)',
             line=dict(color='cyan')
         ))
         fig6.add_trace(go.Scatter(
@@ -1096,7 +1096,7 @@ else:
             x=lankle["%cycle"], 
             y=lankle["Mean_Lankle"], 
             mode='lines',
-            name='Left',
+            name='Average Left Ankle (Normal Subjects)',
             line=dict(color='orange')
         ))
         fig7.add_trace(go.Scatter(
@@ -1119,7 +1119,7 @@ else:
         ))
         
         fig7.update_layout(
-            title="Right Ankle",
+            title="Left Ankle",
             xaxis_title="%Cycle",
             yaxis_title="Value",
             template="plotly_dark",
@@ -1131,7 +1131,7 @@ else:
             x=rankle["%cycle"], 
             y=rankle["Mean_Rankle"], 
             mode='lines',
-            name='Right',
+            name='Average Right Ankle (Normal Subjects)',
             line=dict(color='cyan')
         ))
         fig8.add_trace(go.Scatter(
