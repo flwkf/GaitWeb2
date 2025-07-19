@@ -822,8 +822,6 @@ else:
             name='Upper Bound (Left)',
             line=dict(color='orange', width=0),
             showlegend=False,
-            hoverinfo='text',
-            text=[f"Upper Bound (Left): {cycle}%, {val:.2f}°" for cycle, val in zip(lpelvis["%cycle"], lpelvis["Mean_Lpelvis"] + lpelvis["std_Lpelvis"])]
         ))
         fig1.add_trace(go.Scatter(
             x=lpelvis["%cycle"], 
@@ -835,7 +833,7 @@ else:
             fillcolor='rgba(255, 165, 0, 0.2)',
             showlegend=True,
             hoverinfo='text',
-            text=[f"Lower Bound (Left): {cycle}%, {val:.2f}°" for cycle, val in zip(lpelvis["%cycle"], lpelvis["Mean_Lpelvis"] - lpelvis["std_Lpelvis"])]
+            text=[f"Upper Bound (Left): {cycle}%, {valup:.2f}°<br>Lower Bound (Left): {cycle}%, {vallow:.2f}°" for cycle, vallow, valup in zip(lpelvis["%cycle"], lpelvis["Mean_Lpelvis"] - lpelvis["std_Lpelvis"], lpelvis["Mean_Lpelvis"] + lpelvis["std_Lpelvis"])]
 
         ))
         
