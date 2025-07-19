@@ -828,7 +828,9 @@ else:
             line=dict(color='orange', width=0),
             fill='tonexty',  # Fill between this trace and the previous one
             fillcolor='rgba(255, 165, 0, 0.2)',
-            showlegend=True
+            showlegend=True,
+            hoverinfo='text',
+            text=['Lower Bound (Left)' for _ in y]
         ))
         
         ## Update layout
