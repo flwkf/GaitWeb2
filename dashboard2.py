@@ -828,7 +828,7 @@ else:
             line=dict(color='orange', width=0),
             fill='tonexty',  # Fill between this trace and the previous one
             fillcolor='rgba(255, 165, 0, 0.2)',
-            showlegend=False
+            showlegend=True
         ))
         
         ## Update layout
