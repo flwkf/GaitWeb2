@@ -795,7 +795,7 @@ else:
             x=lpelvis["%cycle"], 
             y=lpelvis["Mean_Lpelvis"], 
             mode='lines',
-            name='Average Left Pelvis (Normal Subjects)',
+            name='Average Left Pelvis<br>(Normal Subjects)',
             line=dict(color='orange')
         ))
         fig1.add_trace(go.Scatter(
