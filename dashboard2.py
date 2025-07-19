@@ -824,7 +824,7 @@ else:
             x=lpelvis["%cycle"], 
             y=lpelvis["Mean_Lpelvis"] - lpelvis["std_Lpelvis"], 
             mode='lines',
-            name='Lower Bound (Left)',
+            name='Standard Error Area',
             line=dict(color='orange', width=0),
             fill='tonexty',  # Fill between this trace and the previous one
             fillcolor='rgba(255, 165, 0, 0.2)',
