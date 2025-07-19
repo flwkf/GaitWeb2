@@ -820,7 +820,7 @@ else:
             line=dict(color='orange', width=0),
             showlegend=False,
             hoverinfo='text',
-            text=[f"Lower Bound (Left): {cycle}%, {val:.2f}°" for cycle, val in zip(lpelvis["%cycle"], lpelvis["Mean_Lpelvis"] + lpelvis["std_Lpelvis"])]
+            text=[f"Upper Bound (Left): {cycle}%, {val:.2f}°" for cycle, val in zip(lpelvis["%cycle"], lpelvis["Mean_Lpelvis"] + lpelvis["std_Lpelvis"])]
         ))
         fig1.add_trace(go.Scatter(
             x=lpelvis["%cycle"], 
