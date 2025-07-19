@@ -822,6 +822,7 @@ else:
             name='Upper Bound (Left)',
             line=dict(color='orange', width=0),
             showlegend=False,
+            hoverinfo='skip'
         ))
         fig1.add_trace(go.Scatter(
             x=lpelvis["%cycle"], 
