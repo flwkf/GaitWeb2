@@ -830,7 +830,7 @@ else:
             fillcolor='rgba(255, 165, 0, 0.2)',
             showlegend=True,
             hoverinfo='text',
-            text=['Lower Bound (Left)' for _ in y]
+            text=['Lower Bound (Left)']
         ))
         
         ## Update layout
