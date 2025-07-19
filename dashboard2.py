@@ -235,7 +235,8 @@ if uploaded_file is not None:
                 'std_Rpelvis': std_r_pelvis,
                 'your right pelvis': norm_kinematics_df['RPelvisAngles_X']
             })
-            
+            maelpelvis = np.mean(np.abs(lpelvis["your left pelvis"] - lpelvis["Mean_Lpelvis"]))
+            maerpelvis = np.mean(np.abs(lpelvis["your right pelvis"] - lpelvis["Mean_Rpelvis"]))
             ## Create the figure
             fig1 = go.Figure()
 
@@ -281,6 +282,7 @@ if uploaded_file is not None:
                 template="plotly_dark",
                 title_x=0.5
             )
+            st.write(f"**Mean difference in left pelvis angle (Patient vs Normal): {maelpelvis:.2f}°**")
             
             fig2 = go.Figure()
             ## Add mean and shading for Right Pelvis
@@ -323,7 +325,7 @@ if uploaded_file is not None:
                 template="plotly_dark",
                 title_x=0.5
             )
-            
+            st.write(f"**Mean difference in right pelvis angle (Patient vs Normal): {maerpelvis:.2f}°**")
 
             # Knee
             percentage_cycle = pd.DataFrame(filtered_df['Percentage of Gait Cycle'].tolist())
