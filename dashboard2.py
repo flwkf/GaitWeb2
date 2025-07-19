@@ -1218,7 +1218,7 @@ else:
             fillcolor='rgba(0, 255, 255, 0.2)',
             showlegend=False,
             hoverinfo='text',
-            text=[f"Upper Bound (Right): {cycle}%, {valup:.2f}°<br>Lower Bound (Right): {cycle}%, {vallow:.2f}°" for cycle, vallow, valup in zip(rankle["%cycle"], rankle["Mean_Rankle"] - rankle["std_Lankle"], rankle["Mean_Lankle"] + rankle["std_Rankle"])]
+            text=[f"Upper Bound (Right): {cycle}%, {valup:.2f}°<br>Lower Bound (Right): {cycle}%, {vallow:.2f}°" for cycle, vallow, valup in zip(rankle["%cycle"], rankle["Mean_Rankle"] - rankle["std_Rankle"], rankle["Mean_Rankle"] + rankle["std_Rankle"])]
         ))
 
         fig8.update_layout(
