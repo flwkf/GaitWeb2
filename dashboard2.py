@@ -235,8 +235,6 @@ if uploaded_file is not None:
                 'std_Rpelvis': std_r_pelvis,
                 'your right pelvis': norm_kinematics_df['RPelvisAngles_X']
             })
-            maelpelvis = np.mean(np.abs(lpelvis["your left pelvis"] - lpelvis["Mean_Lpelvis"]))
-            maerpelvis = np.mean(np.abs(rpelvis["your right pelvis"] - rpelvis["Mean_Rpelvis"]))
             ## Create the figure
             fig1 = go.Figure()
 
@@ -282,7 +280,6 @@ if uploaded_file is not None:
                 template="plotly_dark",
                 title_x=0.5
             )
-            fig1.write(f"**Mean difference in left pelvis angle (Patient vs Normal): {maelpelvis:.2f}°**")
             
             fig2 = go.Figure()
             ## Add mean and shading for Right Pelvis
@@ -325,7 +322,6 @@ if uploaded_file is not None:
                 template="plotly_dark",
                 title_x=0.5
             )
-            fig2.write(f"**Mean difference in right pelvis angle (Patient vs Normal): {maerpelvis:.2f}°**")
 
             # Knee
             percentage_cycle = pd.DataFrame(filtered_df['Percentage of Gait Cycle'].tolist())
@@ -678,23 +674,39 @@ if uploaded_file is not None:
 
             tab1.subheader("PELVIS")
             tab1.write('Pelvis(dalam bahasa Indonesia: panggul) adalah struktur tulang yang berbentuk cekungan di bawah perut, di antara tulang pinggul, dan di atas paha.')
+            maelpelvis = np.mean(np.abs(lpelvis["your left pelvis"] - lpelvis["Mean_Lpelvis"]))
+            maerpelvis = np.mean(np.abs(rpelvis["your right pelvis"] - rpelvis["Mean_Rpelvis"]))
             tab1.plotly_chart(fig1)
+            tab1.write(f"**Mean difference in left pelvis angle (Patient vs Normal): {maelpelvis:.2f}°**")
             tab1.plotly_chart(fig2)
+            tab1.write(f"**Mean difference in right pelvis angle (Patient vs Normal): {maerpelvis:.2f}°**")
 
             tab2.subheader("KNEE")
             tab2.write('Knee (dalam bahasa Indonesia: lutut) adalah bagian tubuh manusia yang terletak di antara paha dan betis, berfungsi sebagai sendi yang menghubungkan tulang femur (paha) dengan tulang tibia (betis).')
+            maelknee = np.mean(np.abs(lknee["your left knee"] - lknee["Mean_Lknee"]))
+            maerknee = np.mean(np.abs(rknee["your right knee"] - rknee["Mean_Rknee"]))
             tab2.plotly_chart(fig3)
+            tab2.write(f"**Mean difference in left knee angle (Patient vs Normal): {maelknee:.2f}°**")
             tab2.plotly_chart(fig4)
+            tab2.write(f"**Mean difference in right knee angle (Patient vs Normal): {maerknee:.2f}°**")
 
             tab3.subheader("HIP")
             tab3.write('Hip (dalam bahasa Indonesia: pinggul) adalah bagian tubuh yang terletak di bawah perut, menghubungkan tubuh bagian atas dengan kaki.')
+            maelhip = np.mean(np.abs(lhip["your left hip"] - lhip["Mean_Lhip"]))
+            maerhip = np.mean(np.abs(rhip["your right hip"] - rhip["Mean_Rhip"]))
             tab3.plotly_chart(fig5)
+            tab3.write(f"**Mean difference in left hip angle (Patient vs Normal): {maelhip:.2f}°**")
             tab3.plotly_chart(fig6)
+            tab3.write(f"**Mean difference in right hip angle (Patient vs Normal): {maerhip:.2f}°**")
 
             tab4.subheader("ANKLE")
             tab4.write('Ankle (dalam bahasa Indonesia: pergelangan kaki) adalah sendi yang terletak di antara kaki bagian bawah (tulang tibia dan fibula) dan bagian atas kaki (tulang talus).')
+            maelankle = np.mean(np.abs(lankle["your left ankle"] - lankle["Mean_Lankle"]))
+            maerankle = np.mean(np.abs(rankle["your right ankle"] - rankle["Mean_Rankle"]))
             tab4.plotly_chart(fig7)
+            tab4.write(f"**Mean difference in left ankle angle (Patient vs Normal): {maelankle:.2f}°**")
             tab4.plotly_chart(fig8)
+            tab4.write(f"**Mean difference in right ankle angle (Patient vs Normal): {maerankle:.2f}°**")
 
     except Exception as e:
         st.error(f"An error occurred while processing the file: {e}")
