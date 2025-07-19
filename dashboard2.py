@@ -855,7 +855,9 @@ else:
             y=rpelvis["Mean_Rpelvis"], 
             mode='lines',
             name='Average Right Pelvis<br>(Normal Subjects)',
-            line=dict(color='cyan')
+            line=dict(color='cyan'),
+            hoverinfo='text',
+            text=[f"Average Normal Subjects: {cycle}%, {val:.2f}°" for cycle, val in zip(rpelvis["%cycle"], rpelvis["Mean_Rpelvis"])]
         ))
         fig2.add_trace(go.Scatter(
             x=rpelvis["%cycle"], 
@@ -863,24 +865,29 @@ else:
             mode='lines',
             name='Upper Bound (Right)',
             line=dict(color='cyan', width=0),
-            showlegend=False
+            showlegend=False,
+            hoverinfo='skip'
         ))
         fig2.add_trace(go.Scatter(
             x=rpelvis["%cycle"], 
             y=rpelvis["Mean_Rpelvis"] - rpelvis["std_Rpelvis"], 
             mode='lines',
-            name='Lower Bound (Right)',
+            name='Standard Error Area',
             line=dict(color='cyan', width=0),
             fill='tonexty',
             fillcolor='rgba(0, 255, 255, 0.2)',
-            showlegend=False
+            showlegend=True,
+            hoverinfo='text',
+            text=[f"Upper Bound (Right): {cycle}%, {valup:.2f}°<br>Lower Bound (Right): {cycle}%, {vallow:.2f}°" for cycle, vallow, valup in zip(rpelvis["%cycle"], rpelvis["Mean_Rpelvis"] - rpelvis["std_Rpelvis"], rpelvis["Mean_Rpelvis"] + rpelvis["std_Rpelvis"])]
+
         ))
         fig2.update_layout(
             title="Right Pelvis",
             xaxis_title="%Cycle",
             yaxis_title="Value",
             template="plotly_dark",
-            title_x=0.5
+            title_x=0.5,
+            hovermode="x unified"
         )
         
 
@@ -920,7 +927,9 @@ else:
             y=lknee["Mean_Lknee"], 
             mode='lines',
             name='Average Left Knee<br>(Normal Subjects)',
-            line=dict(color='orange')
+            line=dict(color='orange'),
+            hoverinfo='text',
+            text=[f"Average Normal Subjects: {cycle}%, {val:.2f}°" for cycle, val in zip(lknee["%cycle"], lknee["Mean_Lknee"])]
         ))
         fig3.add_trace(go.Scatter(
             x=lknee["%cycle"], 
@@ -928,17 +937,21 @@ else:
             mode='lines',
             name='Upper Bound (Left)',
             line=dict(color='orange', width=0),
-            showlegend=False
+            showlegend=False,
+            hoverinfo='skip'
         ))
         fig3.add_trace(go.Scatter(
             x=lknee["%cycle"], 
             y=lknee["Mean_Lknee"] - lknee["std_Lknee"], 
             mode='lines',
-            name='Lower Bound (Left)',
+            name='Standard Error Area',
             line=dict(color='orange', width=0),
             fill='tonexty',
             fillcolor='rgba(255, 165, 0, 0.2)',
-            showlegend=False
+            showlegend=False,
+            hoverinfo='text',
+            text=[f"Upper Bound (Left): {cycle}%, {valup:.2f}°<br>Lower Bound (Left): {cycle}%, {vallow:.2f}°" for cycle, vallow, valup in zip(lknee["%cycle"], lknee["Mean_Lknee"] - lknee["std_Lknee"], lknee["Mean_Lknee"] + lknee["std_Lknee"])]
+
         ))
         
         fig3.update_layout(
@@ -946,7 +959,8 @@ else:
             xaxis_title="%Cycle",
             yaxis_title="Value",
             template="plotly_dark",
-            title_x=0.5
+            title_x=0.5,
+            hovermode="x unified"
         )
         
         fig4 = go.Figure()
@@ -955,7 +969,9 @@ else:
             y=rknee["Mean_Rknee"], 
             mode='lines',
             name='Average Right Knee<br>(Normal Subjects)',
-            line=dict(color='cyan')
+            line=dict(color='cyan'),
+            hoverinfo='text',
+            text=[f"Average Normal Subjects: {cycle}%, {val:.2f}°" for cycle, val in zip(rknee["%cycle"], rknee["Mean_Rknee"])]
         ))
         fig4.add_trace(go.Scatter(
             x=rknee["%cycle"], 
@@ -963,24 +979,29 @@ else:
             mode='lines',
             name='Upper Bound (Right)',
             line=dict(color='cyan', width=0),
-            showlegend=False
+            showlegend=False,
+            hoverinfo='skip'
         ))
         fig4.add_trace(go.Scatter(
             x=rknee["%cycle"], 
             y=rknee["Mean_Rknee"] - rknee["std_Rknee"], 
             mode='lines',
-            name='Lower Bound (Right)',
+            name='Standard Error Area',
             line=dict(color='cyan', width=0),
             fill='tonexty',
             fillcolor='rgba(0, 255, 255, 0.2)',
-            showlegend=False
+            showlegend=False,
+            hoverinfo='text',
+            text=[f"Upper Bound (Right): {cycle}%, {valup:.2f}°<br>Lower Bound (Right): {cycle}%, {vallow:.2f}°" for cycle, vallow, valup in zip(rknee["%cycle"], rknee["Mean_Rknee"] - rknee["std_Rknee"], rknee["Mean_Rknee"] + rknee["std_Rknee"])]
+
         ))
         fig4.update_layout(
             title="Right Knee",
             xaxis_title="%Cycle",
             yaxis_title="Value",
             template="plotly_dark",
-            title_x=0.5
+            title_x=0.5,
+            hovermode="x unified"
         )
         
 
@@ -1020,7 +1041,9 @@ else:
             y=lhip["Mean_Lhip"], 
             mode='lines',
             name='Average Left Hip<br>(Normal Subjects)',
-            line=dict(color='orange')
+            line=dict(color='orange'),
+            hoverinfo='text',
+            text=[f"Average Normal Subjects: {cycle}%, {val:.2f}°" for cycle, val in zip(lhip["%cycle"], lhip["Mean_Lhip"])]
         ))
         fig5.add_trace(go.Scatter(
             x=lhip["%cycle"], 
@@ -1028,24 +1051,29 @@ else:
             mode='lines',
             name='Upper Bound (Left)',
             line=dict(color='orange', width=0),
-            showlegend=False
+            showlegend=False,
+            hoverinfo='skip'
         ))
         fig5.add_trace(go.Scatter(
             x=lhip["%cycle"], 
             y=lhip["Mean_Lhip"] - lhip["std_Lhip"], 
             mode='lines',
-            name='Lower Bound (Left)',
+            name='Standard Error Area',
             line=dict(color='orange', width=0),
             fill='tonexty',
             fillcolor='rgba(255, 165, 0, 0.2)',
-            showlegend=False
+            showlegend=False,
+            hoverinfo='text',
+            text=[f"Upper Bound (Left): {cycle}%, {valup:.2f}°<br>Lower Bound (Left): {cycle}%, {vallow:.2f}°" for cycle, vallow, valup in zip(lhip["%cycle"], lhip["Mean_Lhip"] - lhip["std_Lhip"], lhip["Mean_Lhip"] + lhip["std_Lhip"])]
+
         ))
         fig5.update_layout(
             title="Left Hip",
             xaxis_title="%Cycle",
             yaxis_title="Value",
             template="plotly_dark",
-            title_x=0.5
+            title_x=0.5,
+            hovermode="x unified"
         )
         
         fig6 = go.Figure()
@@ -1055,7 +1083,9 @@ else:
             y=rhip["Mean_Rhip"], 
             mode='lines',
             name='Average Right Hip<br>(Normal Subjects)',
-            line=dict(color='cyan')
+            line=dict(color='cyan'),
+            hoverinfo='text',
+            text=[f"Average Normal Subjects: {cycle}%, {val:.2f}°" for cycle, val in zip(rhip["%cycle"], rhip["Mean_Rhip"])]
         ))
         fig6.add_trace(go.Scatter(
             x=rhip["%cycle"], 
@@ -1063,17 +1093,21 @@ else:
             mode='lines',
             name='Upper Bound (Right)',
             line=dict(color='cyan', width=0),
-            showlegend=False
+            showlegend=False,
+            hoverinfo='skip'
         ))
         fig6.add_trace(go.Scatter(
             x=rhip["%cycle"], 
             y=rhip["Mean_Rhip"] - rhip["std_Rhip"], 
             mode='lines',
-            name='Lower Bound (Right)',
+            name='Standard Error Area',
             line=dict(color='cyan', width=0),
             fill='tonexty',
             fillcolor='rgba(0, 255, 255, 0.2)',
-            showlegend=False
+            showlegend=False,
+            hoverinfo='text',
+            text=[f"Upper Bound (Right): {cycle}%, {valup:.2f}°<br>Lower Bound (Right): {cycle}%, {vallow:.2f}°" for cycle, vallow, valup in zip(rhip["%cycle"], rhip["Mean_Rhip"] - rhip["std_Rhip"], rhip["Mean_Rhip"] + rhip["std_Rhip"])]
+
         ))
 
         fig6.update_layout(
@@ -1119,7 +1153,9 @@ else:
             y=lankle["Mean_Lankle"], 
             mode='lines',
             name='Average Left Ankle<br>(Normal Subjects)',
-            line=dict(color='orange')
+            line=dict(color='orange'),
+            hoverinfo='text',
+            text=[f"Average Normal Subjects: {cycle}%, {val:.2f}°" for cycle, val in zip(lankle["%cycle"], lankle["Mean_Lankle"])]
         ))
         fig7.add_trace(go.Scatter(
             x=lankle["%cycle"], 
@@ -1127,17 +1163,21 @@ else:
             mode='lines',
             name='Upper Bound (Left)',
             line=dict(color='orange', width=0),
-            showlegend=False
+            showlegend=False,
+            hoverinfo='skip'
         ))
         fig7.add_trace(go.Scatter(
             x=lankle["%cycle"], 
             y=lankle["Mean_Lankle"] - lankle["std_Lankle"], 
             mode='lines',
-            name='Lower Bound (Left)',
+            name='Standard Error Area',
             line=dict(color='orange', width=0),
             fill='tonexty',
             fillcolor='rgba(255, 165, 0, 0.2)',
-            showlegend=False
+            showlegend=False,
+            hoverinfo='text',
+            text=[f"Upper Bound (Left): {cycle}%, {valup:.2f}°<br>Lower Bound (Left): {cycle}%, {vallow:.2f}°" for cycle, vallow, valup in zip(lankle["%cycle"], lankle["Mean_Lankle"] - lankle["std_Lankle"], lankle["Mean_Lankle"] + lankle["std_Lankle"])]
+
         ))
         
         fig7.update_layout(
@@ -1146,6 +1186,7 @@ else:
             yaxis_title="Value",
             template="plotly_dark",
             title_x=0.5,
+            hovermode="x unified"
         )
 
         fig8 = go.Figure()
@@ -1154,7 +1195,9 @@ else:
             y=rankle["Mean_Rankle"], 
             mode='lines',
             name='Average Right Ankle<br>(Normal Subjects)',
-            line=dict(color='cyan')
+            line=dict(color='cyan'),
+            hoverinfo='text',
+            text=[f"Average Normal Subjects: {cycle}%, {val:.2f}°" for cycle, val in zip(rankle["%cycle"], rankle["Mean_Rankle"])]
         ))
         fig8.add_trace(go.Scatter(
             x=rankle["%cycle"], 
@@ -1162,17 +1205,20 @@ else:
             mode='lines',
             name='Upper Bound (Right)',
             line=dict(color='cyan', width=0),
-            showlegend=False
+            showlegend=False,
+            hoverinfo='skip'
         ))
         fig8.add_trace(go.Scatter(
             x=rankle["%cycle"], 
             y=rankle["Mean_Rankle"] - rankle["std_Rankle"], 
             mode='lines',
-            name='Lower Bound (Right)',
+            name='Standard Error Area',
             line=dict(color='cyan', width=0),
             fill='tonexty',
             fillcolor='rgba(0, 255, 255, 0.2)',
-            showlegend=False
+            showlegend=False,
+            hoverinfo='text',
+            text=[f"Upper Bound (Right): {cycle}%, {valup:.2f}°<br>Lower Bound (Right): {cycle}%, {vallow:.2f}°" for cycle, vallow, valup in zip(rankle["%cycle"], rankle["Mean_Rankle"] - rankle["std_Lankle"], rankle["Mean_Lankle"] + rankle["std_Rankle"])]
         ))
 
         fig8.update_layout(
@@ -1181,6 +1227,7 @@ else:
             yaxis_title="Value",
             template="plotly_dark",
             title_x=0.5,
+            hovermode="x unified"
         )
         tab1, tab2, tab3, tab4 = st.tabs(["PELVIS", "KNEE","HIP","ANKLE"])
         data = np.random.randn(10, 1)
