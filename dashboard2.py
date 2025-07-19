@@ -236,7 +236,7 @@ if uploaded_file is not None:
                 'your right pelvis': norm_kinematics_df['RPelvisAngles_X']
             })
             maelpelvis = np.mean(np.abs(lpelvis["your left pelvis"] - lpelvis["Mean_Lpelvis"]))
-            maerpelvis = np.mean(np.abs(lpelvis["your right pelvis"] - lpelvis["Mean_Rpelvis"]))
+            maerpelvis = np.mean(np.abs(rpelvis["your right pelvis"] - rpelvis["Mean_Rpelvis"]))
             ## Create the figure
             fig1 = go.Figure()
 
