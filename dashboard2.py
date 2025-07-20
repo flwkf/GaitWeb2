@@ -1298,23 +1298,60 @@ else:
                 st.plotly_chart(fig1, use_container_width=True)
             with col2:
                 st.plotly_chart(fig2, use_container_width=True)
+                
+        with tab2:
+            tab1.subheader("KNEE")
+            tab1.write(
+                'Knee (dalam bahasa Indonesia: lutut) adalah bagian tubuh manusia yang terletak di antara paha dan betis, '
+                'berfungsi sebagai sendi yang menghubungkan tulang femur (paha) dengan tulang tibia (betis).'
+            )
+            
+            col1, col2 = tab1.columns(2)  # Membuat 2 kolom di dalam tab2
+            with col1:
+                st.plotly_chart(fig3, use_container_width=True)
+            with col2:
+                st.plotly_chart(fig4, use_container_width=True)
+
+        with tab3:
+            tab1.subheader("HIP")
+            tab1.write(
+                'Hip (dalam bahasa Indonesia: pinggul) adalah bagian tubuh yang terletak di bawah perut, menghubungkan tubuh bagian atas dengan kaki.'
+            )
+            
+            col1, col2 = tab1.columns(2)  # Membuat 2 kolom di dalam tab3
+            with col1:
+                st.plotly_chart(fig5, use_container_width=True)
+            with col2:
+                st.plotly_chart(fig6, use_container_width=True)
+
+        with tab4:
+            tab1.subheader("ANKLE")
+            tab1.write(
+                'Ankle (dalam bahasa Indonesia: pergelangan kaki) adalah sendi yang terletak di antara kaki bagian bawah (tulang tibia dan fibula) dan bagian atas kaki (tulang talus).'
+            )
+            
+            col1, col2 = tab1.columns(2)  # Membuat 2 kolom di dalam tab4
+            with col1:
+                st.plotly_chart(fig7, use_container_width=True)
+            with col2:
+                st.plotly_chart(fig8, use_container_width=True)
         # tab1.subheader("PELVIS")
         # tab1.write('Pelvis(dalam bahasa Indonesia: panggul) adalah struktur tulang yang berbentuk cekungan di bawah perut, di antara tulang pinggul, dan di atas paha.')
         # tab1.plotly_chart(fig1)
         # tab1.plotly_chart(fig2)
 
-        tab2.subheader("KNEE")
-        tab2.write('Knee (dalam bahasa Indonesia: lutut) adalah bagian tubuh manusia yang terletak di antara paha dan betis, berfungsi sebagai sendi yang menghubungkan tulang femur (paha) dengan tulang tibia (betis).')
-        tab2.plotly_chart(fig3)
-        tab2.plotly_chart(fig4)
+        # tab2.subheader("KNEE")
+        # tab2.write('Knee (dalam bahasa Indonesia: lutut) adalah bagian tubuh manusia yang terletak di antara paha dan betis, berfungsi sebagai sendi yang menghubungkan tulang femur (paha) dengan tulang tibia (betis).')
+        # tab2.plotly_chart(fig3)
+        # tab2.plotly_chart(fig4)
 
-        tab3.subheader("HIP")
-        tab3.write('Hip (dalam bahasa Indonesia: pinggul) adalah bagian tubuh yang terletak di bawah perut, menghubungkan tubuh bagian atas dengan kaki.')
-        tab3.plotly_chart(fig5)
-        tab3.plotly_chart(fig6)
+        # tab3.subheader("HIP")
+        # tab3.write('Hip (dalam bahasa Indonesia: pinggul) adalah bagian tubuh yang terletak di bawah perut, menghubungkan tubuh bagian atas dengan kaki.')
+        # tab3.plotly_chart(fig5)
+        # tab3.plotly_chart(fig6)
 
-        tab4.subheader("ANKLE")
-        tab4.write('Ankle (dalam bahasa Indonesia: pergelangan kaki) adalah sendi yang terletak di antara kaki bagian bawah (tulang tibia dan fibula) dan bagian atas kaki (tulang talus).')
-        tab4.plotly_chart(fig7)
-        tab4.plotly_chart(fig8)
+        # tab4.subheader("ANKLE")
+        # tab4.write('Ankle (dalam bahasa Indonesia: pergelangan kaki) adalah sendi yang terletak di antara kaki bagian bawah (tulang tibia dan fibula) dan bagian atas kaki (tulang talus).')
+        # tab4.plotly_chart(fig7)
+        # tab4.plotly_chart(fig8)
         
