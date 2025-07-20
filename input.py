@@ -83,21 +83,33 @@ class GaitAnalysisData:
         }
 
     def extract_norm_kinematics(self):
-        return {
-            "Norm Kinematics": {
-                "Percentage of Gait Cycle": self.normkin_processed['Percentage of Gait Cycle'].tolist(),
-                "LPelvisAngles_X": self.normkin_processed["LPelvisAngles_X"].tolist(),
-                "RPelvisAngles_X": self.normkin_processed["RPelvisAngles_X"].tolist(),
-                "LHipAngles_X": self.normkin_processed["LHipAngles_X"].tolist(),
-                "RHipAngles_X": self.normkin_processed["RHipAngles_X"].tolist(),
-                "LKneeAngles_X": self.normkin_processed["LKneeAngles_X"].tolist(),
-                "RKneeAngles_X": self.normkin_processed["RKneeAngles_X"].tolist(),
-                "LAnkleAngles_X": self.normkin_processed["LAnkleAngles_X"].tolist(),
-                "RAnkleAngles_X": self.normkin_processed["RAnkleAngles_X"].tolist(),
-                "LFootProgressAngles_X": self.normkin_processed["LFootProgressAngles_X"].tolist(),
-                "RFootProgressAngles_X": self.normkin_processed["RFootProgressAngles_X"].tolist()
+        required_cols = [
+        "Percentage of Gait Cycle", "LPelvisAngles_X", "RPelvisAngles_X",
+        "LHipAngles_X", "RHipAngles_X", "LKneeAngles_X", "RKneeAngles_X",
+        "LAnkleAngles_X", "RAnkleAngles_X", "LFootProgressAngles_X", "RFootProgressAngles_X"
+    ]
+
+        missing_cols = [col for col in required_cols if col not in self.normkin_processed.columns]
+    
+        if missing_cols:
+            st.error(f"Data kinematik tidak lengkap. Kolom hilang: {', '.join(missing_cols)}")
+            st.stop()
+        else:
+            return {
+                "Norm Kinematics": {
+                    "Percentage of Gait Cycle": self.normkin_processed['Percentage of Gait Cycle'].tolist(),
+                    "LPelvisAngles_X": self.normkin_processed["LPelvisAngles_X"].tolist(),
+                    "RPelvisAngles_X": self.normkin_processed["RPelvisAngles_X"].tolist(),
+                    "LHipAngles_X": self.normkin_processed["LHipAngles_X"].tolist(),
+                    "RHipAngles_X": self.normkin_processed["RHipAngles_X"].tolist(),
+                    "LKneeAngles_X": self.normkin_processed["LKneeAngles_X"].tolist(),
+                    "RKneeAngles_X": self.normkin_processed["RKneeAngles_X"].tolist(),
+                    "LAnkleAngles_X": self.normkin_processed["LAnkleAngles_X"].tolist(),
+                    "RAnkleAngles_X": self.normkin_processed["RAnkleAngles_X"].tolist(),
+                    "LFootProgressAngles_X": self.normkin_processed["LFootProgressAngles_X"].tolist(),
+                    "RFootProgressAngles_X": self.normkin_processed["RFootProgressAngles_X"].tolist()
+                }
             }
-        }
 
     def to_dict(self):
         return {
@@ -150,16 +162,11 @@ if uploaded_file is not None:
                         else:
                             return True  # Format tidak sesuai, harusnya list
                     return False  # Semua aman
-                required_cols = ["Percentage of Gait Cycle", "LPelvisAngles_X", "RPelvisAngles_X",
-                                "LHipAngles_X", "RHipAngles_X", "LKneeAngles_X", "RKneeAngles_X",
-                                "LAnkleAngles_X", "RAnkleAngles_X", "LFootProgressAngles_X", "RFootProgressAngles_X"]
-    
-                missing_cols = [col for col in required_cols if col not in self.normkin_processed.columns]
     
 
                 norm_kin_data = data_dict.get("norm_kinematics", {})
-                if check_missing(data_dict) or check_norm_kinematics(norm_kin_data) or missing_cols:
-                    st.warning("⚠️ Invalid data: there are empty values, non-numeric text, or missing columns.")
+                if check_missing(data_dict) or check_norm_kinematics(norm_kin_data):
+                    st.warning("⚠️ Invalid data: there are empty values or non-numeric text.")
                     st.stop()
                 else:
 
