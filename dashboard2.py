@@ -1300,37 +1300,37 @@ else:
                 st.plotly_chart(fig2, use_container_width=True)
                 
         with tab2:
-            tab1.subheader("KNEE")
-            tab1.write(
+            tab2.subheader("KNEE")
+            tab2.write(
                 'Knee (dalam bahasa Indonesia: lutut) adalah bagian tubuh manusia yang terletak di antara paha dan betis, '
                 'berfungsi sebagai sendi yang menghubungkan tulang femur (paha) dengan tulang tibia (betis).'
             )
             
-            col1, col2 = tab1.columns(2)  # Membuat 2 kolom di dalam tab2
+            col1, col2 = tab2.columns(2)  # Membuat 2 kolom di dalam tab2
             with col1:
                 st.plotly_chart(fig3, use_container_width=True)
             with col2:
                 st.plotly_chart(fig4, use_container_width=True)
 
         with tab3:
-            tab1.subheader("HIP")
-            tab1.write(
+            tab3.subheader("HIP")
+            tab3.write(
                 'Hip (dalam bahasa Indonesia: pinggul) adalah bagian tubuh yang terletak di bawah perut, menghubungkan tubuh bagian atas dengan kaki.'
             )
             
-            col1, col2 = tab1.columns(2)  # Membuat 2 kolom di dalam tab3
+            col1, col2 = tab3.columns(2)  # Membuat 2 kolom di dalam tab3
             with col1:
                 st.plotly_chart(fig5, use_container_width=True)
             with col2:
                 st.plotly_chart(fig6, use_container_width=True)
 
         with tab4:
-            tab1.subheader("ANKLE")
-            tab1.write(
+            tab4.subheader("ANKLE")
+            tab4.write(
                 'Ankle (dalam bahasa Indonesia: pergelangan kaki) adalah sendi yang terletak di antara kaki bagian bawah (tulang tibia dan fibula) dan bagian atas kaki (tulang talus).'
             )
             
-            col1, col2 = tab1.columns(2)  # Membuat 2 kolom di dalam tab4
+            col1, col2 = tab4.columns(2)  # Membuat 2 kolom di dalam tab4
             with col1:
                 st.plotly_chart(fig7, use_container_width=True)
             with col2:
