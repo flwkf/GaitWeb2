@@ -305,7 +305,7 @@ if uploaded_file is not None:
                 name='Patient',
                 line=dict(color='black')
             ))
-                fig2.add_trace(go.Scatter(
+            fig2.add_trace(go.Scatter(
                 x=rpelvis["%cycle"], 
                 y=rpelvis["Mean_Rpelvis"] + rpelvis["std_Rpelvis"], 
                 mode='lines',
