@@ -592,7 +592,8 @@ if uploaded_file is not None:
                 xaxis_title="%Cycle",
                 yaxis_title="Value",
                 template="plotly_dark",
-                title_x=0.5
+                title_x=0.5,
+                hovermode="x unified"
             )
 
             # Ankle
