@@ -781,7 +781,7 @@ else:
     cursor = collection.find()  # Mengambil semua dokumen
     data = list(cursor)  # Mengonversi cursor menjadi list
     if len(data) == 0:
-        st.error("Database tidak memiliki data gait analysis. Silakan tambahkan atau unggah data terlebih dahulu.")
+        st.error("The database does not have gait analysis data. Please add or upload the data first.")
         st.stop() 
     # Normalisasi data untuk DataFrame
     df = pd.json_normalize(data)
@@ -827,7 +827,7 @@ else:
         filtered_df = filtered_df[filtered_df["Gender"] == gender]
         
     if filtered_df.empty:
-        st.error(f"Tidak terdapat data dengan jenis kelamin {gender} yang terklasifikasi {classbmi}")
+        st.error(f"There is no data with gender {gender} classified as {classbmi}.")
     else:
         st.sidebar.markdown(f"**Total Records:** {len(filtered_df)}")
         # Pelvis
