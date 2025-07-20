@@ -778,7 +778,7 @@ else:
     client = MongoClient(st.secrets["MONGO_URI"])
     # client = MongoClient('mongodb://localhost:27017/')
     db = client['GaitDB']
-    collection = db['coba']
+    collection = db['gait_data']
 
     # Membaca data dari MongoDB
     cursor = collection.find()  # Mengambil semua dokumen
