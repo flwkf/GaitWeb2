@@ -92,7 +92,7 @@ class GaitAnalysisData:
         missing_cols = [col for col in required_cols if col not in self.normkin_processed.columns]
     
         if missing_cols:
-            st.error(f"Incomplete kinematic data. Missing columns: {‘, ’.join(missing_cols)}")
+            st.error(f"Incomplete kinematic data. Missing columns: {', '.join(missing_cols)}")
             st.stop()
         else:
             return {
