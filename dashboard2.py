@@ -1286,10 +1286,22 @@ else:
         tab1, tab2, tab3, tab4 = st.tabs(["PELVIS", "KNEE","HIP","ANKLE"])
         data = np.random.randn(10, 1)
 
-        tab1.subheader("PELVIS")
-        tab1.write('Pelvis(dalam bahasa Indonesia: panggul) adalah struktur tulang yang berbentuk cekungan di bawah perut, di antara tulang pinggul, dan di atas paha.')
-        tab1.plotly_chart(fig1)
-        tab1.plotly_chart(fig2)
+        with tab1:
+            tab1.subheader("PELVIS")
+            tab1.write(
+                'Pelvis (dalam bahasa Indonesia: panggul) adalah struktur tulang yang berbentuk cekungan di bawah perut, '
+                'di antara tulang pinggul, dan di atas paha.'
+            )
+            
+            col1, col2 = tab1.columns(2)  # Membuat 2 kolom di dalam tab1
+            with col1:
+                st.plotly_chart(fig1, use_container_width=True)
+            with col2:
+                st.plotly_chart(fig2, use_container_width=True)
+        # tab1.subheader("PELVIS")
+        # tab1.write('Pelvis(dalam bahasa Indonesia: panggul) adalah struktur tulang yang berbentuk cekungan di bawah perut, di antara tulang pinggul, dan di atas paha.')
+        # tab1.plotly_chart(fig1)
+        # tab1.plotly_chart(fig2)
 
         tab2.subheader("KNEE")
         tab2.write('Knee (dalam bahasa Indonesia: lutut) adalah bagian tubuh manusia yang terletak di antara paha dan betis, berfungsi sebagai sendi yang menghubungkan tulang femur (paha) dengan tulang tibia (betis).')
