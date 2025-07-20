@@ -763,8 +763,8 @@ if uploaded_file is not None:
                     tab4.write(f"**Mean difference in left ankle angle (Patient vs Normal): {maelankle:.2f}°**")
                     tab4.plotly_chart(fig8)
                     tab4.write(f"**Mean difference in right ankle angle (Patient vs Normal): {maerankle:.2f}°**")
-            except Exception as e:
-                st.error(f"An error occurred while connecting or processing data.: {e}")
+        except Exception as e:
+            st.error(f"An error occurred while connecting or processing data.: {e}")
     except Exception as e:
         st.error(f"An error occurred while processing the file: {e}")
 else:
