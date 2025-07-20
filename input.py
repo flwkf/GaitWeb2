@@ -137,7 +137,7 @@ if uploaded_file is not None:
                         return pd.isna(data)
 
                         
-                 def check_norm_kinematics(norm_kinematics):
+                def check_norm_kinematics(norm_kinematics):
                     for key, value in norm_kinematics.items():
                         if isinstance(value, list):
                             for v in value:
