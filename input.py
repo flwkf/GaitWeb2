@@ -92,7 +92,7 @@ class GaitAnalysisData:
         missing_cols = [col for col in required_cols if col not in self.normkin_processed.columns]
     
         if missing_cols:
-            st.error(f"Data kinematik tidak lengkap. Kolom hilang: {', '.join(missing_cols)}")
+            st.error(f"Incomplete kinematic data. Missing columns: {‘, ’.join(missing_cols)}")
             st.stop()
         else:
             return {
@@ -129,7 +129,7 @@ if uploaded_file is not None:
 
     if st.button("Process File"):
         if usia == 0 or jenis_kelamin == "":
-            st.warning("Mohon isi usia dan jenis kelamin sebelum memproses file.")
+            st.warning("Please enter your age and gender before processing the file.")
         else:
             content = uploaded_file.read()
             gait_data = GaitAnalysisData(content, usia, jenis_kelamin)
