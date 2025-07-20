@@ -775,12 +775,14 @@ else:
     client = MongoClient(st.secrets["MONGO_URI"])
     # client = MongoClient('mongodb://localhost:27017/')
     db = client['GaitDB']
-    collection = db['gait_data']
+    collection = db['coba']
 
     # Membaca data dari MongoDB
     cursor = collection.find()  # Mengambil semua dokumen
     data = list(cursor)  # Mengonversi cursor menjadi list
-
+    if len(data) == 0:
+        st.error("Database tidak memiliki data gait analysis. Silakan tambahkan atau unggah data terlebih dahulu.")
+        st.stop() 
     # Normalisasi data untuk DataFrame
     df = pd.json_normalize(data)
     # Mengubah nama kolom untuk mempermudah akses
