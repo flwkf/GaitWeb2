@@ -150,14 +150,19 @@ if uploaded_file is not None:
                         else:
                             return True  # Format tidak sesuai, harusnya list
                     return False  # Semua aman
+                required_cols = ["Percentage of Gait Cycle", "LPelvisAngles_X", "RPelvisAngles_X",
+                                "LHipAngles_X", "RHipAngles_X", "LKneeAngles_X", "RKneeAngles_X",
+                                "LAnkleAngles_X", "RAnkleAngles_X", "LFootProgressAngles_X", "RFootProgressAngles_X"]
+    
+                missing_cols = [col for col in required_cols if col not in self.normkin_processed.columns]
+    
+
                 norm_kin_data = data_dict.get("norm_kinematics", {})
-                if check_missing(data_dict) or check_norm_kinematics(norm_kin_data):
-                    st.warning("Data mengandung nilai kosong atau teks non-numerik.")
+                if check_missing(data_dict) or check_norm_kinematics(norm_kin_data) or missing_cols:
+                    st.warning("⚠️ Invalid data: there are empty values, non-numeric text, or missing columns.")
                     st.stop()
                 else:
-    
-                    # Menyisipkan data ke MongoDB
-                    
+
                     # Create a new client and connect to the server
                     client = MongoClient(st.secrets["MONGO_URI"])            
                     db = client['GaitDB']
