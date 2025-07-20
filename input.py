@@ -153,6 +153,7 @@ if uploaded_file is not None:
                 norm_kin_data = data_dict.get("norm_kinematics", {})
                 if check_missing(data_dict) or check_norm_kinematics(norm_kin_data):
                     st.warning("Data mengandung nilai kosong atau teks non-numerik.")
+                    st.stop()
                 else:
     
                     # Menyisipkan data ke MongoDB
