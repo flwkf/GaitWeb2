@@ -731,6 +731,68 @@ if uploaded_file is not None:
             tab1, tab2, tab3, tab4 = st.tabs(["PELVIS", "KNEE","HIP","ANKLE"])
             data = np.random.randn(10, 1)
 
+            with tab1:
+                tab1.subheader("PELVIS")
+                tab1.write(
+                    'Pelvis (dalam bahasa Indonesia: panggul) adalah struktur tulang yang berbentuk cekungan di bawah perut, '
+                    'di antara tulang pinggul, dan di atas paha.'
+                )
+                maelpelvis = np.mean(np.abs(lpelvis["your left pelvis"] - lpelvis["Mean_Lpelvis"]))
+                maerpelvis = np.mean(np.abs(rpelvis["your right pelvis"] - rpelvis["Mean_Rpelvis"]))
+                col1, col2 = tab1.columns(2)  # Membuat 2 kolom di dalam tab1
+                with col1:
+                    st.plotly_chart(fig1, use_container_width=True)
+                    st.write(f"**Mean difference in left pelvis angle (Patient vs Normal): {maelpelvis:.2f}°**")
+                with col2:
+                    st.plotly_chart(fig2, use_container_width=True)
+                    st.write(f"**Mean difference in right pelvis angle (Patient vs Normal): {maerpelvis:.2f}°**")
+                    
+            with tab2:
+                tab2.subheader("KNEE")
+                tab2.write(
+                    'Knee (dalam bahasa Indonesia: lutut) adalah bagian tubuh manusia yang terletak di antara paha dan betis, '
+                    'berfungsi sebagai sendi yang menghubungkan tulang femur (paha) dengan tulang tibia (betis).'
+                )
+                maelknee = np.mean(np.abs(lknee["your left knee"] - lknee["Mean_Lknee"]))
+                maerknee = np.mean(np.abs(rknee["your right knee"] - rknee["Mean_Rknee"]))
+                col1, col2 = tab2.columns(2)  # Membuat 2 kolom di dalam tab2
+                with col1:
+                    st.plotly_chart(fig3, use_container_width=True)
+                    st.write(f"**Mean difference in left knee angle (Patient vs Normal): {maelknee:.2f}°**")
+                with col2:
+                    st.plotly_chart(fig4, use_container_width=True)
+                    st.write(f"**Mean difference in right knee angle (Patient vs Normal): {maerknee:.2f}°**")
+    
+            with tab3:
+                tab3.subheader("HIP")
+                tab3.write(
+                    'Hip (dalam bahasa Indonesia: pinggul) adalah bagian tubuh yang terletak di bawah perut, menghubungkan tubuh bagian atas dengan kaki.'
+                )
+                maelhip = np.mean(np.abs(lhip["your left hip"] - lhip["Mean_Lhip"]))
+                maerhip = np.mean(np.abs(rhip["your right hip"] - rhip["Mean_Rhip"]))
+                col1, col2 = tab3.columns(2)  # Membuat 2 kolom di dalam tab3
+                with col1:
+                    st.plotly_chart(fig5, use_container_width=True)
+                    st.write(f"**Mean difference in left hip angle (Patient vs Normal): {maelhip:.2f}°**")
+                with col2:
+                    st.plotly_chart(fig6, use_container_width=True)
+                    st.write(f"**Mean difference in right hip angle (Patient vs Normal): {maerhip:.2f}°**")
+    
+            with tab4:
+                tab4.subheader("ANKLE")
+                tab4.write(
+                    'Ankle (dalam bahasa Indonesia: pergelangan kaki) adalah sendi yang terletak di antara kaki bagian bawah (tulang tibia dan fibula) dan bagian atas kaki (tulang talus).'
+                )
+                maelankle = np.mean(np.abs(lankle["your left ankle"] - lankle["Mean_Lankle"]))
+                maerankle = np.mean(np.abs(rankle["your right ankle"] - rankle["Mean_Rankle"]))
+                col1, col2 = tab4.columns(2)  # Membuat 2 kolom di dalam tab4
+                with col1:
+                    st.plotly_chart(fig7, use_container_width=True)
+                    st.write(f"**Mean difference in left ankle angle (Patient vs Normal): {maelankle:.2f}°**")
+                with col2:
+                    st.plotly_chart(fig8, use_container_width=True)
+                    st.write(f"**Mean difference in right ankle angle (Patient vs Normal): {maerankle:.2f}°**")
+
             tab1.subheader("PELVIS")
             tab1.write('Pelvis(dalam bahasa Indonesia: panggul) adalah struktur tulang yang berbentuk cekungan di bawah perut, di antara tulang pinggul, dan di atas paha.')
             maelpelvis = np.mean(np.abs(lpelvis["your left pelvis"] - lpelvis["Mean_Lpelvis"]))
