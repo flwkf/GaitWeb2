@@ -158,6 +158,7 @@ if uploaded_file is not None:
             data = list(cursor)  # Mengonversi cursor menjadi list
             if not data:
                 st.warning("Tidak ada data yang ditemukan di database.")
+                st.stop()
             else:
                 # Normalisasi data untuk DataFrame
                 df = pd.json_normalize(data)
