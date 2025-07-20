@@ -136,16 +136,23 @@ if uploaded_file is not None:
                         # Deteksi NaN atau None
                         if pd.isna(data):
                             return True
-                        # Deteksi jika seharusnya angka tapi berupa teks non-numerik
-                        if isinstance(data, str):
-                            try:
-                                float(data)  # jika bisa diubah ke angka, aman
-                                return False
-                            except ValueError:
-                                return True  # kalau tidak bisa diubah ke float → berarti teks
                         return False
-
-                if check_missing(data_dict):
+                        
+                def check_norm_kinematics(norm_kinematics):
+                    for key, value in norm_kinematics.items():
+                        if isinstance(value, list):
+                            for v in value:
+                                if pd.isna(v):
+                                    return True  # Ada NaN/None
+                                try:
+                                    float(v)  # pastikan bisa dikonversi ke angka
+                                except ValueError:
+                                    return True  # Ada teks non-numerik
+                        else:
+                            return True  # Format tidak sesuai, harusnya list
+                    return False  # Semua aman
+                norm_kin_data = data_dict.get("norm_kinematics", {})
+                if check_missing(data_dict) or check_norm_kinematics(norm_kin_data):
                     st.warning("Data mengandung nilai kosong atau teks non-numerik.")
                 else:
     
