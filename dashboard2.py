@@ -151,7 +151,7 @@ if uploaded_file is not None:
         client = MongoClient(st.secrets["MONGO_URI"])
         # client = MongoClient('mongodb://localhost:27017/')
         db = client['GaitDB']
-        collection = db['gait_data']
+        collection = db['coba']
 
         # Membaca data dari MongoDB
         cursor = collection.find()  # Mengambil semua dokumen
@@ -773,7 +773,7 @@ else:
     client = MongoClient(st.secrets["MONGO_URI"])
     # client = MongoClient('mongodb://localhost:27017/')
     db = client['GaitDB']
-    collection = db['gait_data']
+    collection = db['coba']
 
     # Membaca data dari MongoDB
     cursor = collection.find()  # Mengambil semua dokumen
