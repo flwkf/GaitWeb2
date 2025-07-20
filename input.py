@@ -133,10 +133,9 @@ if uploaded_file is not None:
                     elif isinstance(data, list):
                         return any(check_missing(v) for v in data)
                     else:
-                        # Deteksi NaN atau None
-                        if pd.isna(data):
-                            return True
-                        return False
+                        # Cek apakah nilai kosong (NaN atau None)
+                        return pd.isna(data)
+
                         
                 def check_norm_kinematics(norm_kinematics):
                     for key, value in norm_kinematics.items():
