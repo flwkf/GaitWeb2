@@ -15,13 +15,7 @@ from pymongo.server_api import ServerApi
 import pandas as pd
 import numpy as np
 st.set_page_config(layout="wide", initial_sidebar_state="expanded", page_title="Dashboard Gait Analysis")
-st.markdown("""
-    <style>
-    html, body, [data-testid="stAppViewContainer"] {
-        zoom: 0.75 !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
+
 class GaitAnalysisData:
     def __init__(self, data):
         self.df = pd.read_excel(data, sheet_name=[0, 1])  # Read the uploaded file
