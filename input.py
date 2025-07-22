@@ -169,7 +169,7 @@ if uploaded_file is not None:
                     st.error("⚠️ Invalid data: there are empty values or non-numeric text.")
                     st.stop()
                 else:
-                    Try:
+                    try:
                         client = MongoClient(st.secrets["MONGO_URI"])            
                         db = client['GaitDB']
                         collection = db['gait_data']
