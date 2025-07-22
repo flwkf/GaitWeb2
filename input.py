@@ -169,13 +169,10 @@ if uploaded_file is not None:
                     st.error("⚠️ Invalid data: there are empty values or non-numeric text.")
                     st.stop()
                 else:
-
-                    # Create a new client and connect to the server
-                    client = MongoClient(st.secrets["MONGO_URI"])            
-                    db = client['GaitDB']
-                    collection = db['gait_data']
-        
-                    try:
+                    Try:
+                        client = MongoClient(st.secrets["MONGO_URI"])            
+                        db = client['GaitDB']
+                        collection = db['gait_data']
                         collection.insert_one(data_dict)
                         st.success("Data successfully inserted into MongoDB!")
                     except Exception as e:
