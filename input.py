@@ -173,7 +173,7 @@ if uploaded_file is not None:
                     # Create a new client and connect to the server
                     client = MongoClient(st.secrets["MONGO_URI"])            
                     db = client['GaitDB']
-                    collection = db['coba']
+                    collection = db['gait_data']
         
                     try:
                         collection.insert_one(data_dict)
