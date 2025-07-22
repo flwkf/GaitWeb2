@@ -166,7 +166,7 @@ if uploaded_file is not None:
 
                 norm_kin_data = data_dict.get("norm_kinematics", {})
                 if check_missing(data_dict) or check_norm_kinematics(norm_kin_data):
-                    st.warning("⚠️ Invalid data: there are empty values or non-numeric text.")
+                    st.error("⚠️ Invalid data: there are empty values or non-numeric text.")
                     st.stop()
                 else:
 
