@@ -14,7 +14,7 @@ from pymongo.server_api import ServerApi
 # Kelas GaitAnalysisData tetap sama seperti yang telah Anda buat sebelumnya
 import pandas as pd
 import numpy as np
-st.set_page_config(layout="wide", initial_sidebar_state="expanded", page_title="Nama Aplikasi")
+st.set_page_config(layout="wide", initial_sidebar_state="expanded", page_title="Dashboard Gait Analysis")
 class GaitAnalysisData:
     def __init__(self, data):
         self.df = pd.read_excel(data, sheet_name=[0, 1])  # Read the uploaded file
