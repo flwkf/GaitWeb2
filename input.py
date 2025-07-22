@@ -172,7 +172,7 @@ if uploaded_file is not None:
                     try:
                         client = MongoClient(st.secrets["MONGO_URI"])            
                         db = client['GaitDB']
-                        collection = db['gait_data']
+                        collection = db['data']
                         collection.insert_one(data_dict)
                         st.success("Data successfully inserted into MongoDB!")
                     except Exception as e:
