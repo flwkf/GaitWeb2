@@ -170,7 +170,7 @@ if uploaded_file is not None:
                     st.stop()
                 else:
                     try:
-                        client = MongoClient(st.secrets["MONGO_URI"])            
+                        client = MongoClient(st.secrets["mongodb://localhost:9999"])            
                         db = client['GaitDB']
                         collection = db['data']
                         collection.insert_one(data_dict)
