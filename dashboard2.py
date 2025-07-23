@@ -722,7 +722,7 @@ if uploaded_file is not None:
             ))
     
             fig8.update_layout(
-                title="Left Ankle",
+                title="Right Ankle",
                 xaxis_title="%Cycle",
                 yaxis_title="Value",
                 template="plotly_dark",
