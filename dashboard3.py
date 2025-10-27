@@ -843,7 +843,7 @@ if uploaded_file is not None:
                 maerhip = np.mean(np.abs(rhip["your right hip"] - rhip["Mean_Rhip"]))
                 col1, col2 = tab3.columns(2)  # Membuat 2 kolom di dalam tab3
                 with col1:
-                    st.plotly_chart(fig3, use_container_width=True)
+                    st.plotly_chart(fig5, use_container_width=True)
                     st.write(f"**Mean difference in left hip angle (Patient vs Normal): {maelhip:.2f}°**")
             
                     # Statistik tambahan untuk LLM
@@ -856,7 +856,7 @@ if uploaded_file is not None:
                     st.info(analysis_text_lhip)
             
                 with col2:
-                    st.plotly_chart(fig4, use_container_width=True)
+                    st.plotly_chart(fig6, use_container_width=True)
                     st.write(f"**Mean difference in right hip angle (Patient vs Normal): {maerhip:.2f}°**")
             
                     mean_diff_rhip = np.mean(rhip["your right hip"] - rhip["Mean_Rhip"])
@@ -875,7 +875,7 @@ if uploaded_file is not None:
                 maerankle = np.mean(np.abs(rankle["your right ankle"] - rankle["Mean_Rankle"]))
                 col1, col2 = tab4.columns(2)  # Membuat 2 kolom di dalam tab4
                 with col1:
-                    st.plotly_chart(fig3, use_container_width=True)
+                    st.plotly_chart(fig7, use_container_width=True)
                     st.write(f"**Mean difference in left ankle angle (Patient vs Normal): {maelankle:.2f}°**")
             
                     # Statistik tambahan untuk LLM
@@ -888,7 +888,7 @@ if uploaded_file is not None:
                     st.info(analysis_text_lankle)
             
                 with col2:
-                    st.plotly_chart(fig4, use_container_width=True)
+                    st.plotly_chart(fig8, use_container_width=True)
                     st.write(f"**Mean difference in right ankle angle (Patient vs Normal): {maerankle:.2f}°**")
             
                     mean_diff_rankle = np.mean(rankle["your right ankle"] - rankle["Mean_Rankle"])
@@ -1532,6 +1532,7 @@ else:
         # tab4.plotly_chart(fig7)
         # tab4.plotly_chart(fig8)
         
+
 
 
 
