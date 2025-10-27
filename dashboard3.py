@@ -104,6 +104,16 @@ class GaitAnalysisData:
         }
 
 from langchain_community.llms import Replicate
+# Ambil token dari Streamlit secrets
+api_token = st.secrets["REPLICATE_API_TOKEN"]
+os.environ["REPLICATE_API_TOKEN"] = api_token
+
+# Inisialisasi model IBM Granite
+model = "ibm-granite/granite-3.3-8b-instruct"
+llm = Replicate(
+    model=model,
+    replicate_api_token=api_token,
+)
 
 def analyze_graph_with_llm(graph_type, mae_value, mean_diff, std_diff):
     """
@@ -122,17 +132,10 @@ def analyze_graph_with_llm(graph_type, mae_value, mean_diff, std_diff):
     """
 
     try:
-        api_token = st.secrets["REPLICATE_API_TOKEN"]
-        os.environ["REPLICATE_API_TOKEN"] = api_token
-        # Model setup
-        model = "ibm-granite/granite-3.3-8b-instruct"
-        output = Replicate(
-        model=model,
-        replicate_api_token=api_token,
-        )
-        return "".join(output)
+        response = llm.invoke(prompt)
+        return response.strip()
     except Exception as e:
-        return f"(Gagal mengambil analisis otomatis: {e})"
+        return f"Gagal menghasilkan analisis AI: {e}"
 
 # Sidebar untuk upload file
 uploaded_file = st.sidebar.file_uploader("upload patient data", type=["xlsx"])
@@ -1529,6 +1532,7 @@ else:
         # tab4.plotly_chart(fig7)
         # tab4.plotly_chart(fig8)
         
+
 
 
 
