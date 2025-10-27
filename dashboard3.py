@@ -103,7 +103,7 @@ class GaitAnalysisData:
             **self.norm_kinematics
         }
 
-import replicate
+from langchain_community.llms import Replicate
 
 def analyze_graph_with_llm(graph_type, mae_value, mean_diff, std_diff):
     """
@@ -1530,5 +1530,6 @@ else:
         # tab4.plotly_chart(fig7)
         # tab4.plotly_chart(fig8)
         
+
 
 
