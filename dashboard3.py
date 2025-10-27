@@ -780,24 +780,24 @@ if uploaded_file is not None:
                     st.write(f"**Mean difference in left pelvis angle (Patient vs Normal): {maelpelvis:.2f}°**")
             
                     # Statistik tambahan untuk LLM
-                    mean_diff = np.mean(lpelvis["your left pelvis"] - lpelvis["Mean_Lpelvis"])
-                    std_diff = np.std(lpelvis["your left pelvis"] - lpelvis["Mean_Lpelvis"])
+                    mean_diff_lpelvis = np.mean(lpelvis["your left pelvis"] - lpelvis["Mean_Lpelvis"])
+                    std_diff_lpelvis = np.std(lpelvis["your left pelvis"] - lpelvis["Mean_Lpelvis"])
             
                     # Analisis otomatis dengan IBM Granite
                     with st.spinner("Menganalisis pola gerak (Left Pelvis) menggunakan IBM Granite..."):
-                        analysis_text = analyze_graph_with_llm("Left Pelvis", maelpelvis, mean_diff, std_diff)
-                    st.info(analysis_text)
+                        analysis_text_lpelvis = analyze_graph_with_llm("Left Pelvis", maelpelvis, mean_diff_lpelvis, std_diff_lpelvis)
+                    st.info(analysis_text_lpelvis)
             
                 with col2:
                     st.plotly_chart(fig2, use_container_width=True)
                     st.write(f"**Mean difference in right pelvis angle (Patient vs Normal): {maerpelvis:.2f}°**")
             
-                    mean_diff_r = np.mean(rpelvis["your right pelvis"] - rpelvis["Mean_Rpelvis"])
-                    std_diff_r = np.std(rpelvis["your right pelvis"] - rpelvis["Mean_Rpelvis"])
+                    mean_diff_rpelvis = np.mean(rpelvis["your right pelvis"] - rpelvis["Mean_Rpelvis"])
+                    std_diff_rpelvis = np.std(rpelvis["your right pelvis"] - rpelvis["Mean_Rpelvis"])
             
                     with st.spinner("Menganalisis pola gerak (Right Pelvis) menggunakan IBM Granite..."):
-                        analysis_text_r = analyze_graph_with_llm("Right Pelvis", maerpelvis, mean_diff_r, std_diff_r)
-                    st.info(analysis_text_r)
+                        analysis_text_rpelvis = analyze_graph_with_llm("Right Pelvis", maerpelvis, mean_diff_rpelvis, std_diff_rpelvis)
+                    st.info(analysis_text_rpelvis)
                     
             with tab2:
                 tab2.subheader("KNEE")
@@ -811,9 +811,26 @@ if uploaded_file is not None:
                 with col1:
                     st.plotly_chart(fig3, use_container_width=True)
                     st.write(f"**Mean difference in left knee angle (Patient vs Normal): {maelknee:.2f}°**")
+            
+                    # Statistik tambahan untuk LLM
+                    mean_diff_lknee = np.mean(lknee["your left knee"] - lknee["Mean_Lknee"])
+                    std_diff_lknee = np.std(lknee["your left knee"] - lknee["Mean_Lknee"])
+            
+                    # Analisis otomatis dengan IBM Granite
+                    with st.spinner("Menganalisis pola gerak (Left Knee) menggunakan IBM Granite..."):
+                        analysis_text_lknee = analyze_graph_with_llm("Left Knee", maelknee, mean_diff_lknee, std_diff_lknee)
+                    st.info(analysis_text_lknee)
+            
                 with col2:
                     st.plotly_chart(fig4, use_container_width=True)
                     st.write(f"**Mean difference in right knee angle (Patient vs Normal): {maerknee:.2f}°**")
+            
+                    mean_diff_rknee = np.mean(rknee["your right knee"] - rknee["Mean_Rknee"])
+                    std_diff_rknee = np.std(rknee["your right knee"] - rknee["Mean_Rknee"])
+            
+                    with st.spinner("Menganalisis pola gerak (Right Knee) menggunakan IBM Granite..."):
+                        analysis_text_rknee = analyze_graph_with_llm("Right Knee", maerknee, mean_diff_rknee, std_diff_rknee)
+                    st.info(analysis_text_rknee)
     
             with tab3:
                 tab3.subheader("HIP")
@@ -824,11 +841,28 @@ if uploaded_file is not None:
                 maerhip = np.mean(np.abs(rhip["your right hip"] - rhip["Mean_Rhip"]))
                 col1, col2 = tab3.columns(2)  # Membuat 2 kolom di dalam tab3
                 with col1:
-                    st.plotly_chart(fig5, use_container_width=True)
+                    st.plotly_chart(fig3, use_container_width=True)
                     st.write(f"**Mean difference in left hip angle (Patient vs Normal): {maelhip:.2f}°**")
+            
+                    # Statistik tambahan untuk LLM
+                    mean_diff_lhip = np.mean(lhip["your left hip"] - lhip["Mean_Lhip"])
+                    std_diff_lhip = np.std(lhip["your left hip"] - lhip["Mean_Lhip"])
+            
+                    # Analisis otomatis dengan IBM Granite
+                    with st.spinner("Menganalisis pola gerak (Left hip) menggunakan IBM Granite..."):
+                        analysis_text_lhip = analyze_graph_with_llm("Left hip", maelhip, mean_diff_lhip, std_diff_lhip)
+                    st.info(analysis_text_lhip)
+            
                 with col2:
-                    st.plotly_chart(fig6, use_container_width=True)
+                    st.plotly_chart(fig4, use_container_width=True)
                     st.write(f"**Mean difference in right hip angle (Patient vs Normal): {maerhip:.2f}°**")
+            
+                    mean_diff_rhip = np.mean(rhip["your right hip"] - rhip["Mean_Rhip"])
+                    std_diff_rhip = np.std(rhip["your right hip"] - rhip["Mean_Rhip"])
+            
+                    with st.spinner("Menganalisis pola gerak (Right hip) menggunakan IBM Granite..."):
+                        analysis_text_rhip = analyze_graph_with_llm("Right hip", maerhip, mean_diff_rhip, std_diff_rhip)
+                    st.info(analysis_text_rhip)
     
             with tab4:
                 tab4.subheader("ANKLE")
@@ -839,11 +873,28 @@ if uploaded_file is not None:
                 maerankle = np.mean(np.abs(rankle["your right ankle"] - rankle["Mean_Rankle"]))
                 col1, col2 = tab4.columns(2)  # Membuat 2 kolom di dalam tab4
                 with col1:
-                    st.plotly_chart(fig7, use_container_width=True)
+                    st.plotly_chart(fig3, use_container_width=True)
                     st.write(f"**Mean difference in left ankle angle (Patient vs Normal): {maelankle:.2f}°**")
+            
+                    # Statistik tambahan untuk LLM
+                    mean_diff_lankle = np.mean(lankle["your left ankle"] - lankle["Mean_Lankle"])
+                    std_diff_lankle = np.std(lankle["your left ankle"] - lankle["Mean_Lankle"])
+            
+                    # Analisis otomatis dengan IBM Granite
+                    with st.spinner("Menganalisis pola gerak (Left ankle) menggunakan IBM Granite..."):
+                        analysis_text_lankle = analyze_graph_with_llm("Left ankle", maelankle, mean_diff_lankle, std_diff_lankle)
+                    st.info(analysis_text_lankle)
+            
                 with col2:
-                    st.plotly_chart(fig8, use_container_width=True)
+                    st.plotly_chart(fig4, use_container_width=True)
                     st.write(f"**Mean difference in right ankle angle (Patient vs Normal): {maerankle:.2f}°**")
+            
+                    mean_diff_rankle = np.mean(rankle["your right ankle"] - rankle["Mean_Rankle"])
+                    std_diff_rankle = np.std(rankle["your right ankle"] - rankle["Mean_Rankle"])
+            
+                    with st.spinner("Menganalisis pola gerak (Right ankle) menggunakan IBM Granite..."):
+                        analysis_text_rankle = analyze_graph_with_llm("Right ankle", maerankle, mean_diff_rankle, std_diff_rankle)
+                    st.info(analysis_text_rankle)
 
             # tab1.subheader("PELVIS")
             # tab1.write('Pelvis(dalam bahasa Indonesia: panggul) adalah struktur tulang yang berbentuk cekungan di bawah perut, di antara tulang pinggul, dan di atas paha.')
@@ -1479,4 +1530,5 @@ else:
         # tab4.plotly_chart(fig7)
         # tab4.plotly_chart(fig8)
         
+
 
