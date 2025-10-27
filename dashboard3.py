@@ -103,6 +103,38 @@ class GaitAnalysisData:
             **self.norm_kinematics
         }
 
+import replicate
+
+def analyze_graph_with_llm(graph_type, mae_value, mean_diff, std_diff):
+    """
+    Mengirim prompt ke IBM Granite via Replicate untuk menghasilkan analisis teks.
+    """
+    prompt = f"""
+    Kamu adalah analis medis yang menjelaskan hasil gait analysis.
+    Grafik yang dianalisis: {graph_type}.
+    Nilai MAE pasien: {mae_value:.2f} derajat.
+    Rata-rata perbedaan sudut terhadap populasi normal: {mean_diff:.2f} derajat.
+    Standar deviasi perbedaan: {std_diff:.2f} derajat.
+
+    Jelaskan dengan bahasa sederhana apakah pola pergerakan sendi pasien ini
+    masih dalam batas normal atau mengindikasikan kelainan pola jalan.
+    Gunakan maksimal 4 kalimat dalam bahasa Indonesia.
+    """
+
+    try:
+        output = replicate.run(
+            "ibm-granite/granite-13b-chat:latest",
+            input={
+                "prompt": prompt,
+                "temperature": 0.2,
+                "max_new_tokens": 200
+            },
+            api_token=st.secrets["REPLICATE_API_TOKEN"]
+        )
+        return "".join(output)
+    except Exception as e:
+        return f"(Gagal mengambil analisis otomatis: {e})"
+
 # Sidebar untuk upload file
 uploaded_file = st.sidebar.file_uploader("upload patient data", type=["xlsx"])
 
@@ -731,22 +763,41 @@ if uploaded_file is not None:
             )
             tab1, tab2, tab3, tab4 = st.tabs(["PELVIS", "KNEE","HIP","ANKLE"])
             data = np.random.randn(10, 1)
-
+            
             with tab1:
                 tab1.subheader("PELVIS")
                 tab1.write(
                     'Pelvis (dalam bahasa Indonesia: panggul) adalah struktur tulang yang berbentuk cekungan di bawah perut, '
                     'di antara tulang pinggul, dan di atas paha.'
                 )
+            
                 maelpelvis = np.mean(np.abs(lpelvis["your left pelvis"] - lpelvis["Mean_Lpelvis"]))
                 maerpelvis = np.mean(np.abs(rpelvis["your right pelvis"] - rpelvis["Mean_Rpelvis"]))
-                col1, col2 = tab1.columns(2)  # Membuat 2 kolom di dalam tab1
+            
+                col1, col2 = tab1.columns(2)
                 with col1:
                     st.plotly_chart(fig1, use_container_width=True)
                     st.write(f"**Mean difference in left pelvis angle (Patient vs Normal): {maelpelvis:.2f}°**")
+            
+                    # Statistik tambahan untuk LLM
+                    mean_diff = np.mean(lpelvis["your left pelvis"] - lpelvis["Mean_Lpelvis"])
+                    std_diff = np.std(lpelvis["your left pelvis"] - lpelvis["Mean_Lpelvis"])
+            
+                    # Analisis otomatis dengan IBM Granite
+                    with st.spinner("Menganalisis pola gerak (Left Pelvis) menggunakan IBM Granite..."):
+                        analysis_text = analyze_graph_with_llm("Left Pelvis", maelpelvis, mean_diff, std_diff)
+                    st.info(analysis_text)
+            
                 with col2:
                     st.plotly_chart(fig2, use_container_width=True)
                     st.write(f"**Mean difference in right pelvis angle (Patient vs Normal): {maerpelvis:.2f}°**")
+            
+                    mean_diff_r = np.mean(rpelvis["your right pelvis"] - rpelvis["Mean_Rpelvis"])
+                    std_diff_r = np.std(rpelvis["your right pelvis"] - rpelvis["Mean_Rpelvis"])
+            
+                    with st.spinner("Menganalisis pola gerak (Right Pelvis) menggunakan IBM Granite..."):
+                        analysis_text_r = analyze_graph_with_llm("Right Pelvis", maerpelvis, mean_diff_r, std_diff_r)
+                    st.info(analysis_text_r)
                     
             with tab2:
                 tab2.subheader("KNEE")
@@ -1428,3 +1479,4 @@ else:
         # tab4.plotly_chart(fig7)
         # tab4.plotly_chart(fig8)
         
+
