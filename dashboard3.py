@@ -10,7 +10,7 @@ import pandas as pd
 from pymongo import MongoClient
 import numpy as np
 from pymongo.server_api import ServerApi
-
+import os
 # Kelas GaitAnalysisData tetap sama seperti yang telah Anda buat sebelumnya
 import pandas as pd
 import numpy as np
@@ -122,14 +122,13 @@ def analyze_graph_with_llm(graph_type, mae_value, mean_diff, std_diff):
     """
 
     try:
-        output = replicate.run(
-            "ibm-granite/granite-13b-chat:latest",
-            input={
-                "prompt": prompt,
-                "temperature": 0.2,
-                "max_new_tokens": 200
-            },
-            api_token=st.secrets["REPLICATE_API_TOKEN"]
+        api_token = st.secrets["REPLICATE_API_TOKEN"]
+        os.environ["REPLICATE_API_TOKEN"] = api_token
+        # Model setup
+        model = "ibm-granite/granite-3.3-8b-instruct"
+        output = Replicate(
+        model=model,
+        replicate_api_token=api_token,
         )
         return "".join(output)
     except Exception as e:
@@ -1530,6 +1529,7 @@ else:
         # tab4.plotly_chart(fig7)
         # tab4.plotly_chart(fig8)
         
+
 
 
 
