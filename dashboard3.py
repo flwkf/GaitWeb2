@@ -132,10 +132,15 @@ def analyze_graph_with_llm(graph_type, mae_value, mean_diff, std_diff):
     """
 
     try:
+        time.sleep(10)  # 🔸 tambahkan delay 10 detik antar permintaan
         response = llm.invoke(prompt)
         return response.strip()
     except Exception as e:
         return f"Gagal menghasilkan analisis AI: {e}"
+        
+@st.cache_data(ttl=3600)
+def analyze_graph_with_llm_cached(graph_type, mae_value, mean_diff, std_diff):
+    return analyze_graph_with_llm(graph_type, mae_value, mean_diff, std_diff)
 
 # Sidebar untuk upload file
 uploaded_file = st.sidebar.file_uploader("upload patient data", type=["xlsx"])
@@ -787,8 +792,8 @@ if uploaded_file is not None:
             
                     # Analisis otomatis dengan IBM Granite
                     with st.spinner("Menganalisis pola gerak (Left Pelvis) menggunakan IBM Granite..."):
-                        analysis_text_lpelvis = analyze_graph_with_llm("Left Pelvis", maelpelvis, mean_diff_lpelvis, std_diff_lpelvis)
-                    st.info(analysis_text_lpelvis)
+                        ai_analysis_lpelvis = analyze_graph_with_llm_cached("Left Pelvis", maelpelvis, mean_diff_lpelvis, std_diff_lpelvis)
+                    st.info(ai_analysis_lpelvis)
             
                 with col2:
                     st.plotly_chart(fig2, use_container_width=True)
@@ -798,8 +803,8 @@ if uploaded_file is not None:
                     std_diff_rpelvis = np.std(rpelvis["your right pelvis"] - rpelvis["Mean_Rpelvis"])
             
                     with st.spinner("Menganalisis pola gerak (Right Pelvis) menggunakan IBM Granite..."):
-                        analysis_text_rpelvis = analyze_graph_with_llm("Right Pelvis", maerpelvis, mean_diff_rpelvis, std_diff_rpelvis)
-                    st.info(analysis_text_rpelvis)
+                        ai_analysis_rpelvis = analyze_graph_with_llm_cached("Right Pelvis", maerpelvis, mean_diff_rpelvis, std_diff_rpelvis)
+                    st.info(ai_analysis_rpelvis)
                     
             with tab2:
                 tab2.subheader("KNEE")
@@ -820,8 +825,8 @@ if uploaded_file is not None:
             
                     # Analisis otomatis dengan IBM Granite
                     with st.spinner("Menganalisis pola gerak (Left Knee) menggunakan IBM Granite..."):
-                        analysis_text_lknee = analyze_graph_with_llm("Left Knee", maelknee, mean_diff_lknee, std_diff_lknee)
-                    st.info(analysis_text_lknee)
+                        ai_analysis_lknee = analyze_graph_with_llm_cached("Left Knee", maelknee, mean_diff_lknee, std_diff_lknee)
+                    st.info(ai_analysis_lknee)
             
                 with col2:
                     st.plotly_chart(fig4, use_container_width=True)
@@ -831,8 +836,8 @@ if uploaded_file is not None:
                     std_diff_rknee = np.std(rknee["your right knee"] - rknee["Mean_Rknee"])
             
                     with st.spinner("Menganalisis pola gerak (Right Knee) menggunakan IBM Granite..."):
-                        analysis_text_rknee = analyze_graph_with_llm("Right Knee", maerknee, mean_diff_rknee, std_diff_rknee)
-                    st.info(analysis_text_rknee)
+                        ai_analysis_rknee = analyze_graph_with_llm_cached("Right Knee", maerknee, mean_diff_rknee, std_diff_rknee)
+                    st.info(ai_analysis_rknee)
     
             with tab3:
                 tab3.subheader("HIP")
@@ -852,8 +857,8 @@ if uploaded_file is not None:
             
                     # Analisis otomatis dengan IBM Granite
                     with st.spinner("Menganalisis pola gerak (Left hip) menggunakan IBM Granite..."):
-                        analysis_text_lhip = analyze_graph_with_llm("Left hip", maelhip, mean_diff_lhip, std_diff_lhip)
-                    st.info(analysis_text_lhip)
+                        ai_analysis_lhip = analyze_graph_with_llm_cached("Left hip", maelhip, mean_diff_lhip, std_diff_lhip)
+                    st.info(ai_analysis_lhip)
             
                 with col2:
                     st.plotly_chart(fig6, use_container_width=True)
@@ -863,8 +868,8 @@ if uploaded_file is not None:
                     std_diff_rhip = np.std(rhip["your right hip"] - rhip["Mean_Rhip"])
             
                     with st.spinner("Menganalisis pola gerak (Right hip) menggunakan IBM Granite..."):
-                        analysis_text_rhip = analyze_graph_with_llm("Right hip", maerhip, mean_diff_rhip, std_diff_rhip)
-                    st.info(analysis_text_rhip)
+                        ai_analysis_rhip = analyze_graph_with_llm_cached("Right hip", maerhip, mean_diff_rhip, std_diff_rhip)
+                    st.info(ai_analysis_rhip)
     
             with tab4:
                 tab4.subheader("ANKLE")
@@ -884,8 +889,8 @@ if uploaded_file is not None:
             
                     # Analisis otomatis dengan IBM Granite
                     with st.spinner("Menganalisis pola gerak (Left ankle) menggunakan IBM Granite..."):
-                        analysis_text_lankle = analyze_graph_with_llm("Left ankle", maelankle, mean_diff_lankle, std_diff_lankle)
-                    st.info(analysis_text_lankle)
+                        ai_analysis_lankle = analyze_graph_with_llm_cached("Left ankle", maelankle, mean_diff_lankle, std_diff_lankle)
+                    st.info(ai_analysis_lankle)
             
                 with col2:
                     st.plotly_chart(fig8, use_container_width=True)
@@ -895,8 +900,8 @@ if uploaded_file is not None:
                     std_diff_rankle = np.std(rankle["your right ankle"] - rankle["Mean_Rankle"])
             
                     with st.spinner("Menganalisis pola gerak (Right ankle) menggunakan IBM Granite..."):
-                        analysis_text_rankle = analyze_graph_with_llm("Right ankle", maerankle, mean_diff_rankle, std_diff_rankle)
-                    st.info(analysis_text_rankle)
+                        ai_analysis_rankle = analyze_graph_with_llm_cached("Right ankle", maerankle, mean_diff_rankle, std_diff_rankle)
+                    st.info(ai_analysis_rankle)
 
             # tab1.subheader("PELVIS")
             # tab1.write('Pelvis(dalam bahasa Indonesia: panggul) adalah struktur tulang yang berbentuk cekungan di bawah perut, di antara tulang pinggul, dan di atas paha.')
@@ -1532,6 +1537,7 @@ else:
         # tab4.plotly_chart(fig7)
         # tab4.plotly_chart(fig8)
         
+
 
 
 
